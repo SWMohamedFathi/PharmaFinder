@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PharmaFinder.Core.Repository
+namespace PharmaFinder.Core.Common
 {
-    public interface IOrdersRespository
+    internal class Class1
     {
     }
 }

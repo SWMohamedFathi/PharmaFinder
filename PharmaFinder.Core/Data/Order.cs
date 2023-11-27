@@ -5,6 +5,11 @@ namespace PharmaFinder.Core.Data
 {
     public partial class Order
     {
+        public Order()
+        {
+            Ordermeds = new HashSet<Ordermed>();
+        }
+
         public decimal Orderid { get; set; }
         public decimal? Userid { get; set; }
         public decimal? Pharmacyid { get; set; }
@@ -15,5 +20,6 @@ namespace PharmaFinder.Core.Data
 
         public virtual Pharmacy? Pharmacy { get; set; }
         public virtual User? User { get; set; }
+        public virtual ICollection<Ordermed> Ordermeds { get; set; }
     }
 }

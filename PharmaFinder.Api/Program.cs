@@ -15,10 +15,12 @@ builder.Services.AddScoped<IDbContext, DbContext>();
 builder.Services.AddScoped<IBankRepository, BankRepository>();
 builder.Services.AddScoped<IContactUsRepository, ContactUsRepository>();
 builder.Services.AddScoped<IMedicineRepository, MedicineRepository>();
-builder.Services.AddScoped<IOrdersRespository, OrdersRespository>();
+builder.Services.AddScoped<IOrdersRepository, OrdersRepository>();
 builder.Services.AddScoped<IPharmacyRepository, PharmacyRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserTestmonialRepository, UserTestmonialRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IOrderMedRepository, OrderMedRepository>();
 //Services
 builder.Services.AddScoped<IBankService, BankService>();
 builder.Services.AddScoped<IContactUsService, ContactUsService>();
@@ -27,7 +29,8 @@ builder.Services.AddScoped<IOrdersService, OrdersService>();
 builder.Services.AddScoped<IPharmacyService, PharmacyService>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IUserTestimonialService, UserTestimonialService>();
-
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IOrderMedService, OrderMedService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 

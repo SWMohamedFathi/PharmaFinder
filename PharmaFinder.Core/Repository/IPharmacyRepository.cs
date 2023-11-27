@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PharmaFinder.Core.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace PharmaFinder.Core.Repository
 {
     public interface IPharmacyRepository
     {
+        List<Pharmacy> GetAllPharmacies();
+        Pharmacy GetPharmacyById(decimal id);
+        void CreatePharmacy(Pharmacy pharmacyData);
+        void UpdatePharmacy(Pharmacy pharmacyData);
+        void DeletePharmacy(decimal id);
     }
 }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PharmaFinder.Core.Service
+namespace PharmaFinder.Core.Repository
 {
-    public interface IOrdersService
+    public interface IOrdersRepository
     {
         List<Order> GetAllOrders();
         Order GetOrderById(decimal id);

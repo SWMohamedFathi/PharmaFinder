@@ -7,6 +7,7 @@ namespace PharmaFinder.Core.Data
     {
         public Medicine()
         {
+            Ordermeds = new HashSet<Ordermed>();
             Phmeds = new HashSet<Phmed>();
         }
 
@@ -18,6 +19,7 @@ namespace PharmaFinder.Core.Data
         public DateTime? Expiredate { get; set; }
         public string? Activesubstance { get; set; }
 
+        public virtual ICollection<Ordermed> Ordermeds { get; set; }
         public virtual ICollection<Phmed> Phmeds { get; set; }
     }
 }

@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace PharmaFinder.Core.Common
 {
-    public interface IDbContext
-    {
+   
         public interface IDbContext
         {
             DbConnection Connection { get; }
         }
 
-    }
+    
 }

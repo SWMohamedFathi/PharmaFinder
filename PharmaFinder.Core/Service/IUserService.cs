@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PharmaFinder.Core.Repository
+namespace PharmaFinder.Core.Service
 {
-    public interface IUserRepository
+    public interface IUserService
     {
         List<User> GetAllUsers();
         User GetUserById(decimal id);
