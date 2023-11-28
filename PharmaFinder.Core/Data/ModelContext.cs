@@ -22,6 +22,7 @@ namespace PharmaFinder.Core.Data
         public virtual DbSet<Home> Homes { get; set; } = null!;
         public virtual DbSet<Medicine> Medicines { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
+        public virtual DbSet<Ordermed> Ordermeds { get; set; } = null!;
         public virtual DbSet<Pharmacy> Pharmacies { get; set; } = null!;
         public virtual DbSet<Phmed> Phmeds { get; set; } = null!;
         public virtual DbSet<Role> Roles { get; set; } = null!;
@@ -410,6 +411,40 @@ namespace PharmaFinder.Core.Data
                     .HasForeignKey(d => d.Userid)
                     .OnDelete(DeleteBehavior.SetNull)
                     .HasConstraintName("SYS_C008371");
+            });
+
+            modelBuilder.Entity<Ordermed>(entity =>
+            {
+                entity.ToTable("ORDERMED");
+
+                entity.Property(e => e.Ordermedid)
+                    .HasColumnType("NUMBER(38)")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("ORDERMEDID");
+
+                entity.Property(e => e.Medicineid)
+                    .HasColumnType("NUMBER(38)")
+                    .HasColumnName("MEDICINEID");
+
+                entity.Property(e => e.Orderid)
+                    .HasColumnType("NUMBER(38)")
+                    .HasColumnName("ORDERID");
+
+                entity.Property(e => e.Quantity)
+                    .HasColumnType("NUMBER(38)")
+                    .HasColumnName("QUANTITY");
+
+                entity.HasOne(d => d.Medicine)
+                    .WithMany(p => p.Ordermeds)
+                    .HasForeignKey(d => d.Medicineid)
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("SYS_C008385");
+
+                entity.HasOne(d => d.Order)
+                    .WithMany(p => p.Ordermeds)
+                    .HasForeignKey(d => d.Orderid)
+                    .OnDelete(DeleteBehavior.SetNull)
+                    .HasConstraintName("SYS_C008386");
             });
 
             modelBuilder.Entity<Pharmacy>(entity =>

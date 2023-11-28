@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PharmaFinder.Core.Data
+namespace PharmaFinder.Api.Data
 {
     public partial class Order
     {
@@ -18,8 +18,6 @@ namespace PharmaFinder.Core.Data
         public decimal? Quantity { get; set; }
         public decimal? Orderprice { get; set; }
 
-        public virtual Pharmacy? Pharmacy { get; set; }
-        public virtual User? User { get; set; }
         public virtual ICollection<Ordermed> Ordermeds { get; set; }
     }
 }
