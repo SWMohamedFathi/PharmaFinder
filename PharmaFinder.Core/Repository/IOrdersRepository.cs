@@ -17,7 +17,8 @@ namespace PharmaFinder.Core.Repository
         void DeleteOrder(decimal id);
 
         public void AcceptOrRejectOrders(Order order);
-        public List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search);
+
+        List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search);
 
 
     }

@@ -56,6 +56,7 @@ namespace PharmaFinder.Api.Controllers
             return Ok();
         }
 
+
         [HttpPost]
         [Route("SearchPharmacyName")]
         public List<PharmacyNameSearch> SearchPharmacyName(PharmacyNameSearch search)

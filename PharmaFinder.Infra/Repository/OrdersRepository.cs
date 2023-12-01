@@ -76,6 +76,7 @@ namespace PharmaFinder.Infra.Repository
 
         }
 
+
         public List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search)
         {
             var p = new DynamicParameters();

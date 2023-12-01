@@ -68,6 +68,7 @@ namespace PharmaFinder.Infra.Repository
             p.Add("ID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Pharmacy_Package.DeletePharmacy", p, commandType: CommandType.StoredProcedure);
         }
+
         public List<PharmacyNameSearch> SearchPharmacyName(PharmacyNameSearch search)
         {
             var p = new DynamicParameters();
