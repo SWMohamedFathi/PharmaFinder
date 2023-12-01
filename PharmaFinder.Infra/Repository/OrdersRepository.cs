@@ -67,16 +67,14 @@ namespace PharmaFinder.Infra.Repository
             p.Add("OrderID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("orders_package.DeleteOrder", p, commandType: CommandType.StoredProcedure);
         }
-
-        public List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search)
+        public void AcceptOrRejectOrders( Order order)
         {
             var p = new DynamicParameters();
-            p.Add("DateFrom", search.DateFrom, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("DateTo", search.DateTo, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.Query<PharmacySalesSearch>("orders_package.SalesSearch", p, commandType: CommandType.StoredProcedure);
-            return result.ToList();
+            p.Add("ordersID", order.Orderid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("approvalOrders", order.Approval, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("orders_package.AcceptOrRejectOrders", p, commandType: CommandType.StoredProcedure);
+
         }
 
-       
     }
 }
