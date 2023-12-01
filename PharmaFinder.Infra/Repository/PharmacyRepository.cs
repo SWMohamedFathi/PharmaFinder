@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -67,5 +68,15 @@ namespace PharmaFinder.Infra.Repository
             p.Add("ID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Pharmacy_Package.DeletePharmacy", p, commandType: CommandType.StoredProcedure);
         }
+        public List<PharmacyNameSearch> SearchPharmacyName(PharmacyNameSearch search)
+        {
+            var p = new DynamicParameters();
+            p.Add("PhName", search.Pharmacyname, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Query<PharmacyNameSearch>("Pharmacy_Package.SearchPharmacyName", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+
+        }
+
+
     }
 }

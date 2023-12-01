@@ -1,4 +1,5 @@
 ﻿using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using PharmaFinder.Core.Service;
 using System;
@@ -41,6 +42,10 @@ namespace PharmaFinder.Infra.Service
         public void DeletePharmacy(decimal id)
         {
             _pharmacyRepository.DeletePharmacy(id);
+        }
+        public List<PharmacyNameSearch> SearchPharmacyName(PharmacyNameSearch search)
+        {
+            return _pharmacyRepository.SearchPharmacyName(search);
         }
     }
 }

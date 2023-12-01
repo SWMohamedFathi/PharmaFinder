@@ -1,13 +1,17 @@
 ﻿using Dapper;
+using Oracle.ManagedDataAccess.Client;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace PharmaFinder.Infra.Repository
 {
@@ -62,16 +66,6 @@ namespace PharmaFinder.Infra.Repository
             var p = new DynamicParameters();
             p.Add("OrderID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("orders_package.DeleteOrder", p, commandType: CommandType.StoredProcedure);
-        }
-
-
-        public void AcceptOrRejectOrders(Order order)
-        {
-            var p = new DynamicParameters();
-            p.Add("ordersID", order.Orderid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("approvalOrders", order.Approval, dbType: DbType.String, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.Execute("orders_package.AcceptOrRejectOrders", p, commandType: CommandType.StoredProcedure);
-
         }
     }
 }

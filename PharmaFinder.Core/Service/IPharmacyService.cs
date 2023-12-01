@@ -1,4 +1,5 @@
 ﻿using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace PharmaFinder.Core.Service
         void CreatePharmacy(Pharmacy pharmacyData);
         void UpdatePharmacy(Pharmacy pharmacyData);
         void DeletePharmacy(decimal id);
+        public List<PharmacyNameSearch> SearchPharmacyName(PharmacyNameSearch search);
     }
 }

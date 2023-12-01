@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Service;
 
 namespace PharmaFinder.Api.Controllers
@@ -54,14 +55,5 @@ namespace PharmaFinder.Api.Controllers
             _orderService.DeleteOrder(id);
             return Ok();
         }
-
-        [HttpPut]
-        [Route("AcceptOrRejectOrders")]
-        public void AcceptOrRejectOrders(Order order)
-        {
-           
-            _orderService.AcceptOrRejectOrders(order);
-        }
-
     }
 }

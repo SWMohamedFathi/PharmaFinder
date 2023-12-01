@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PharmaFinder.Core.DTO;
 
 namespace PharmaFinder.Infra.Service
 {
@@ -43,11 +44,5 @@ namespace PharmaFinder.Infra.Service
         {
             _orderRepository.DeleteOrder(id);
         }
-
-        public void AcceptOrRejectOrders(Order order)
-        {
-            _orderRepository.AcceptOrRejectOrders(order);
-        }
-
     }
 }
