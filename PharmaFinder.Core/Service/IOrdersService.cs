@@ -1,5 +1,4 @@
 ﻿using PharmaFinder.Core.Data;
-using PharmaFinder.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,6 @@ namespace PharmaFinder.Core.Service
         void CreateOrder(Order orderData);
         void UpdateOrder(Order orderData);
         void DeleteOrder(decimal id);
-        public void AcceptOrRejectOrders(Order order);
-
+        void AcceptOrRejectOrders(Order order);
     }
 }

@@ -63,7 +63,5 @@ namespace PharmaFinder.Api.Controllers
             _orderService.AcceptOrRejectOrders(order);
 
         }
-
-
     }
 }
