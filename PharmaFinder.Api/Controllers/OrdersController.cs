@@ -55,5 +55,15 @@ namespace PharmaFinder.Api.Controllers
             _orderService.DeleteOrder(id);
             return Ok();
         }
+
+        [HttpPut]
+        [Route("AcceptOrRejectOrders")]
+        public void AcceptOrRejectOrders(Order order)
+        {
+            _orderService.AcceptOrRejectOrders(order);
+
+        }
+
+
     }
 }

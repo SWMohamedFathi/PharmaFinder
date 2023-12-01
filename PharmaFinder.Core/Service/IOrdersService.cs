@@ -15,5 +15,7 @@ namespace PharmaFinder.Core.Service
         void CreateOrder(Order orderData);
         void UpdateOrder(Order orderData);
         void DeleteOrder(decimal id);
+        public void AcceptOrRejectOrders(Order order);
+
     }
 }

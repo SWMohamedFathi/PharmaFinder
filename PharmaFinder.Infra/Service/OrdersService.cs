@@ -44,5 +44,10 @@ namespace PharmaFinder.Infra.Service
         {
             _orderRepository.DeleteOrder(id);
         }
+        public void AcceptOrRejectOrders(Order order)
+        {
+            _orderRepository.AcceptOrRejectOrders(order); 
+        }
+
     }
 }
