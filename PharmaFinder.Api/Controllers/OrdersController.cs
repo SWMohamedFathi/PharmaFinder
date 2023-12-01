@@ -56,14 +56,14 @@ namespace PharmaFinder.Api.Controllers
             return Ok();
         }
 
-        [HttpPost]
-        [Route("SalesSearch")]
+        [HttpPut]
+        [Route("AcceptOrRejectOrders")]
+        public void AcceptOrRejectOrders(Order order)
+        {
+            _orderService.AcceptOrRejectOrders(order);
 
-        public List<PharmacySalesSearch> SearcheStudenCourse(PharmacySalesSearch search)
-        { 
-            return _orderService.SalesSearch(search);
         }
 
-        
+
     }
 }
