@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Repository;
 using PharmaFinder.Core.Service;
 using PharmaFinder.Infra.Common;
 using PharmaFinder.Infra.Repository;
 using PharmaFinder.Infra.Service;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +37,28 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IOrderMedService, OrderMedService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
+builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+
+
+
+
+builder.Services.AddAuthentication(opt => {
+    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+   .AddJwtBearer(options =>
+   {
+       options.TokenValidationParameters = new TokenValidationParameters
+       {
+           ValidateIssuer = true,
+           ValidateAudience = true,
+           ValidateLifetime = true,
+           ValidateIssuerSigningKey = true,
+           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+       };
+   });
+
 
 var app = builder.Build();
 
@@ -51,3 +76,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+app.UseAuthentication();
