@@ -15,7 +15,6 @@ namespace PharmaFinder.Core.Data
         public decimal? Pharmacyid { get; set; }
         public DateTime? Orderdate { get; set; }
         public string? Approval { get; set; }
-        public decimal? Quantity { get; set; }
         public decimal? Orderprice { get; set; }
 
         public virtual Pharmacy? Pharmacy { get; set; }
