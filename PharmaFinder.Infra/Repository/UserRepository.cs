@@ -1,0 +1,78 @@
+﻿using Dapper;
+using PharmaFinder.Core.Common;
+using PharmaFinder.Core.Data;
+using PharmaFinder.Core.Repository;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PharmaFinder.Infra.Repository
+{
+    public class UserRepository:IUserRepository
+    {
+        private readonly IDbContext dbContext;
+
+        public UserRepository(IDbContext _dbContext)
+        {
+            this.dbContext = _dbContext;
+        }
+
+        public List<User> GetAllUsers()
+        {
+            IEnumerable<User> result = dbContext.Connection.Query<User>("users_package.GetAllUsers", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public User GetUserById(decimal id)
+        {
+            var p = new DynamicParameters();
+            p.Add("UserID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Query<User>("users_package.GetUserById", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
+        public void CreateUser(User userData)
+        {
+            var p = new DynamicParameters();
+            p.Add("RoleID", userData.Roleid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("ProfileImage", userData.Profileimage, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("UserName", userData.Username, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Password", userData.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Email", userData.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Gender", userData.Gender, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("DateOfBirth", userData.Dateofbirth, dbType: DbType.Date, direction: ParameterDirection.Input);
+            p.Add("Address", userData.Address, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("PhoneNumber", userData.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("users_package.CreateUser", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public void UpdateUser(User userData)
+        {
+            var p = new DynamicParameters();
+            p.Add("UserID", userData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("RoleID", userData.Roleid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("ProfileImage", userData.Profileimage, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("UserName", userData.Username, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Password", userData.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Email", userData.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Gender", userData.Gender, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("DateOfBirth", userData.Dateofbirth, dbType: DbType.Date, direction: ParameterDirection.Input);
+            p.Add("Address", userData.Address, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("PhoneNumber", userData.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("users_package.UpdateUser", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public void DeleteUser(decimal id)
+        {
+            var p = new DynamicParameters();
+            p.Add("UserID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("users_package.DeleteUser", p, commandType: CommandType.StoredProcedure);
+        }
+    }
+
+
+}
+
