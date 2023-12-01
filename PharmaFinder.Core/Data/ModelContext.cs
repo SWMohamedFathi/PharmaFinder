@@ -388,6 +388,10 @@ namespace PharmaFinder.Core.Data
                     .HasColumnType("NUMBER(38)")
                     .HasColumnName("PHARMACYID");        
 
+                entity.Property(e => e.Quantity)
+                    .HasColumnType("NUMBER(38)")
+                    .HasColumnName("QUANTITY");
+
                 entity.Property(e => e.Userid)
                     .HasColumnType("NUMBER(38)")
                     .HasColumnName("USERID");

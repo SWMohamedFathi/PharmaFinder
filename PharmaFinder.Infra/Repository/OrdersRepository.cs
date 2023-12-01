@@ -76,5 +76,14 @@ namespace PharmaFinder.Infra.Repository
 
         }
 
+        public List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search)
+        {
+            var p = new DynamicParameters();
+            p.Add("DateFrom", search.DateFrom, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("DateTo", search.DateTo, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Query<PharmacySalesSearch>("orders_package.SalesSearch", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
     }
 }

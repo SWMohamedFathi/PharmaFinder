@@ -63,5 +63,11 @@ namespace PharmaFinder.Api.Controllers
             _orderService.AcceptOrRejectOrders(order);
 
         }
+
+
+        public List<PharmacySalesSearch> SearcheStudenCourse(PharmacySalesSearch search)
+        {
+            return _orderService.SalesSearch(search);
+        }
     }
 }
