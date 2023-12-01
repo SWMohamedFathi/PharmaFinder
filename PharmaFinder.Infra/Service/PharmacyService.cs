@@ -43,6 +43,7 @@ namespace PharmaFinder.Infra.Service
         {
             _pharmacyRepository.DeletePharmacy(id);
         }
+
         public List<PharmacyNameSearch> SearchPharmacyName(PharmacyNameSearch search)
         {
             return _pharmacyRepository.SearchPharmacyName(search);

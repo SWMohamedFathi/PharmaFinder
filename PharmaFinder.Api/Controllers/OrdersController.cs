@@ -68,7 +68,7 @@ namespace PharmaFinder.Api.Controllers
         [HttpPost]
         [Route("SalesSearch")]
 
-        public List<PharmacySalesSearch> SearcheStudenCourse(PharmacySalesSearch search)
+        public List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search)
         {
             return _orderService.SalesSearch(search);
         }
