@@ -45,7 +45,6 @@ namespace PharmaFinder.Infra.Repository
             p.Add("PharmacyID", orderData.Pharmacyid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("OrderDate", orderData.Orderdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("Approval", orderData.Approval, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Quantity", orderData.Quantity, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("OrderPrice", orderData.Orderprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("orders_package.CreateOrder", p, commandType: CommandType.StoredProcedure);
         }
@@ -58,7 +57,6 @@ namespace PharmaFinder.Infra.Repository
             p.Add("PharmacyID", orderData.Pharmacyid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("OrderDate", orderData.Orderdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             p.Add("Approval", orderData.Approval, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Quantity", orderData.Quantity, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("OrderPrice", orderData.Orderprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("orders_package.UpdateOrder", p, commandType: CommandType.StoredProcedure);
         }
