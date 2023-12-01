@@ -49,5 +49,9 @@ namespace PharmaFinder.Infra.Service
             _orderRepository.AcceptOrRejectOrders(order); 
         }
 
+        public List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search)
+        {
+            return _orderRepository.SalesSearch(search);
+        }
     }
 }
