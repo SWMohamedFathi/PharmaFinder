@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PharmaFinder.Core.DTO;
+using Dapper;
+using System.Data;
 
 namespace PharmaFinder.Infra.Service
 {
@@ -53,6 +55,16 @@ namespace PharmaFinder.Infra.Service
         public List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search)
         {
             return _orderRepository.SalesSearch(search);
+        }
+   
+        public async Task<IEnumerable<MonthlySalesReport>> GetMonthlySalesReport(int month, int year)
+        {
+            return await _orderRepository.GetMonthlySalesReport(month, year);
+        }
+
+        public async Task<IEnumerable<AnnualSalesReport>> GetAnnualSalesReport(int year)
+        {
+            return await _orderRepository.GetAnnualSalesReport(year);
         }
     }
 }

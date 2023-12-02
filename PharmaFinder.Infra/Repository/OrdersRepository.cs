@@ -1,4 +1,6 @@
 ﻿using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Logging;
 using Oracle.ManagedDataAccess.Client;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
@@ -86,5 +88,31 @@ namespace PharmaFinder.Infra.Repository
             return result.ToList();
         }
 
+        public async Task<IEnumerable<MonthlySalesReport>> GetMonthlySalesReport(int month, int year)
+        {
+           
+                var p = new DynamicParameters();
+                p.Add("p_month", month, DbType.Int32, ParameterDirection.Input);
+                p.Add("p_year", year, DbType.Int32, ParameterDirection.Input);
+
+                var result = await dbContext.Connection.QueryAsync<MonthlySalesReport>("orders_package.MonthlySalesReport", p, commandType: CommandType.StoredProcedure);
+
+            return result;
+         
+        }
+
+        public async Task<IEnumerable<AnnualSalesReport>> GetAnnualSalesReport(int year)
+        {
+
+            var p = new DynamicParameters();
+            p.Add("p_year", year, DbType.Int32, ParameterDirection.Input);
+
+            var result = await dbContext.Connection.QueryAsync<AnnualSalesReport>("orders_package.AnnualSalesReport", p, commandType: CommandType.StoredProcedure);
+
+            return result;
+
+        }
     }
+
+    
 }

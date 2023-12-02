@@ -72,5 +72,21 @@ namespace PharmaFinder.Api.Controllers
         {
             return _orderService.SalesSearch(search);
         }
+
+        [HttpPost]
+        [Route("MonthlySalesReport")]
+       
+        public async Task<IEnumerable<MonthlySalesReport>> GetMonthlySalesReport(int month, int year)
+        {
+            return await _orderService.GetMonthlySalesReport(month,year);
+
+        }
+
+        [HttpPost]
+        [Route("AnnualSalesReport")]
+        public async Task<IEnumerable<AnnualSalesReport>> GetAnnualSalesReport(int year)
+        {
+            return await _orderService.GetAnnualSalesReport(year);
+        }
     }
 }
