@@ -1,4 +1,5 @@
 ﻿using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;

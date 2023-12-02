@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using PharmaFinder.Api.Settings;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Repository;
 using PharmaFinder.Core.Service;
@@ -7,9 +8,8 @@ using PharmaFinder.Infra.Common;
 using PharmaFinder.Infra.Repository;
 using PharmaFinder.Infra.Service;
 using System.Text;
-
-
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -39,8 +39,9 @@ builder.Services.AddScoped<IOrderMedService, OrderMedService>();
 
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<ILoginRepository, LoginRepository>();
-
-
+builder.Services.Configure<EmailConfiguration>(configuration.GetSection("EmailConfiguration"));
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddControllers();
 
 
 builder.Services.AddAuthentication(opt => {
