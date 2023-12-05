@@ -11,4 +11,5 @@ namespace PharmaFinder.Core.DTO
         public int Year { get; set; }
         public int NUM_USERS { get; set; }
     }
+
 }

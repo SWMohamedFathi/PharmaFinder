@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.StaticFiles;
 
 namespace PharmaFinder.Api.Controllers
 {
-    //[Route("api/[controller]")]
+   
     [ApiController]
     public class ReportPDFController : ControllerBase
     {

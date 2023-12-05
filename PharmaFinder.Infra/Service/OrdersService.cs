@@ -66,5 +66,6 @@ namespace PharmaFinder.Infra.Service
         {
             return await _orderRepository.GetAnnualSalesReport(year);
         }
+
     }
 }
