@@ -25,6 +25,7 @@ builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserTestmonialRepository, UserTestmonialRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IOrderMedRepository, OrderMedRepository>();
+
 //Services
 builder.Services.AddScoped<IBankService, BankService>();
 builder.Services.AddScoped<IContactUsService, ContactUsService>();
@@ -35,6 +36,8 @@ builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IUserTestimonialService, UserTestimonialService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IOrderMedService, OrderMedService>();
+builder.Services.AddScoped<IReadPrescriptionService, ReadPrescriptionService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddScoped<ILoginService, LoginService>();

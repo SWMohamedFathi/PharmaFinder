@@ -65,6 +65,14 @@ namespace PharmaFinder.Infra.Repository
             p.Add("ID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Medicine_Package.DeleteMedicine", p, commandType: CommandType.StoredProcedure);
         }
+        public Medicine GetMedicinesByName(string name)
+        {
+            var p = new DynamicParameters();
+            p.Add("MedicineName", name, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Query<Medicine>("Medicine_Package.GetMedicinesByName", p, commandType: CommandType.StoredProcedure);
+            return result.FirstOrDefault();
+        }
+
     }
 }
 
