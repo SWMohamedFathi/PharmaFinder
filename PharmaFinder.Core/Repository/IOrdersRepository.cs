@@ -17,7 +17,7 @@ namespace PharmaFinder.Core.Repository
         void DeleteOrder(decimal id);
         void AcceptOrRejectOrders(Order order);
         List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search);
-        Task<IEnumerable<AnnualSalesReport>> GetAnnualSalesReport(int year);
-        Task<IEnumerable<MonthlySalesReport>> GetMonthlySalesReport(int month, int year);
+
+
     }
 }

@@ -78,6 +78,5 @@ namespace PharmaFinder.Infra.Repository
 
         }
 
-
     }
 }

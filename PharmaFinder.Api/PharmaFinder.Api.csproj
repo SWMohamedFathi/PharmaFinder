@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="IronPdf" Version="2023.12.6" />
 		<PackageReference Include="MailKit" Version="4.3.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.12">
 			<PrivateAssets>all</PrivateAssets>
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <Folder Include="Images\" />
+    <Folder Include="GeneratedReportPDF\" />
   </ItemGroup>
 
 </Project>

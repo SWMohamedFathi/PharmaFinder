@@ -15,7 +15,6 @@ namespace PharmaFinder.Core.Repository
         void CreatePharmacy(Pharmacy pharmacyData);
         void UpdatePharmacy(Pharmacy pharmacyData);
         void DeletePharmacy(decimal id);
-
         List<PharmacyNameSearch> SearchPharmacyName(PharmacyNameSearch search);
     }
 }

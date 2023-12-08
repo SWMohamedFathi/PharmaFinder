@@ -8,7 +8,8 @@ namespace PharmaFinder.Core.DTO
 {
     public class AnnualSalesReport
     {
-        public int Y { get; set; }
+        public int Year { get; set; }
         public int NUM_USERS { get; set; }
     }
+
 }

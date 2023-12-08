@@ -88,5 +88,6 @@ namespace PharmaFinder.Api.Controllers
         {
             return await _orderService.GetAnnualSalesReport(year);
         }
+
     }
 }
