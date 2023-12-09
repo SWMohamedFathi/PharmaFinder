@@ -66,6 +66,13 @@ namespace PharmaFinder.Infra.Service
         {
             return await _orderRepository.GetAnnualSalesReport(year);
         }
-
+        public async Task<IEnumerable<AllSalesByMonthReport>> GetAllSalesByMonthReport(int month, int year)
+        {
+            return await _orderRepository.GetAllSalesByMonthReport(month, year);
+        }
+        public async Task<IEnumerable<AllSalesByYearReport>> GetAllSalesByYearReport(int year)
+        {
+            return await _orderRepository.GetAllSalesByYearReport(year);
+        }
     }
 }

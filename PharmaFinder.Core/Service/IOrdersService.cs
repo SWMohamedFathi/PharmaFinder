@@ -19,5 +19,7 @@ namespace PharmaFinder.Core.Service
         List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search);
         Task<IEnumerable<MonthlySalesReport>> GetMonthlySalesReport(int month, int year);
         Task<IEnumerable<AnnualSalesReport>> GetAnnualSalesReport(int year);
+        Task<IEnumerable<AllSalesByMonthReport>> GetAllSalesByMonthReport(int month, int year);
+        Task<IEnumerable<AllSalesByYearReport>> GetAllSalesByYearReport(int year);
     }
 }

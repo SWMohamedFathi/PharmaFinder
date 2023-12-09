@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Dapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmaFinder.Core.Data;
 using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Service;
+using System.Data;
 
 namespace PharmaFinder.Api.Controllers
 {
@@ -89,5 +91,18 @@ namespace PharmaFinder.Api.Controllers
             return await _orderService.GetAnnualSalesReport(year);
         }
 
+        [HttpPost]
+        [Route("AllSalesByMonthReport")]
+        public async Task<IEnumerable<AllSalesByMonthReport>> GetAllSalesByMonthReport(int month, int year)
+        {
+            return await _orderService.GetAllSalesByMonthReport(month, year);
+        }
+
+        [HttpPost]
+        [Route("AllSalesByYearReport")]
+        public async Task<IEnumerable<AllSalesByYearReport>> GetAllSalesByYearReport(int year)
+        {
+            return await _orderService.GetAllSalesByYearReport(year);
+        }
     }
 }

@@ -112,6 +112,27 @@ namespace PharmaFinder.Infra.Repository
             return result;
 
         }
+
+        public async Task<IEnumerable<AllSalesByMonthReport>> GetAllSalesByMonthReport(int month, int year)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_OrderMonth", month, DbType.Int32, ParameterDirection.Input);
+            p.Add("p_OrderYear", year, DbType.Int32, ParameterDirection.Input);  
+
+            var result = await dbContext.Connection.QueryAsync<AllSalesByMonthReport>("orders_package.GetOrdersByMonth", p, commandType: CommandType.StoredProcedure);
+
+            return result;
+        }
+
+        public async Task<IEnumerable<AllSalesByYearReport>> GetAllSalesByYearReport(int year)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_OrderYear", year, DbType.Int32, ParameterDirection.Input);
+
+            var result = await dbContext.Connection.QueryAsync<AllSalesByYearReport>("orders_package.GetOrdersByYear", p, commandType: CommandType.StoredProcedure);
+
+            return result;
+        }
     }
 
     
