@@ -34,13 +34,13 @@ namespace PharmaFinder.Core.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseOracle("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=orcl)));User Id=PHARM;Password=1234;");
+                optionsBuilder.UseOracle("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=xe)));User Id=C##PHARM;Password=1234;");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("PHARM")
+            modelBuilder.HasDefaultSchema("C##PHARM")
                 .UseCollation("USING_NLS_COMP");
 
             modelBuilder.Entity<About>(entity =>
@@ -167,7 +167,7 @@ namespace PharmaFinder.Core.Data
                     .HasColumnName("BALANCE");
 
                 entity.Property(e => e.Cardholder)
-                    .HasMaxLength(10)
+                    .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("CARDHOLDER");
 
@@ -178,12 +178,16 @@ namespace PharmaFinder.Core.Data
                 entity.Property(e => e.Cvv)
                     .HasColumnType("NUMBER(38)")
                     .HasColumnName("CVV");
+
+                entity.Property(e => e.Expiredate)
+                    .HasColumnType("DATE")
+                    .HasColumnName("EXPIREDATE");
             });
 
             modelBuilder.Entity<Contactu>(entity =>
             {
                 entity.HasKey(e => e.Contactusid)
-                    .HasName("SYS_C007817");
+                    .HasName("SYS_C008633");
 
                 entity.ToTable("CONTACTUS");
 
@@ -386,9 +390,13 @@ namespace PharmaFinder.Core.Data
 
                 entity.Property(e => e.Pharmacyid)
                     .HasColumnType("NUMBER(38)")
-                    .HasColumnName("PHARMACYID");        
+                    .HasColumnName("PHARMACYID");
 
-    
+                entity.Property(e => e.Status)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("STATUS");
+
                 entity.Property(e => e.Userid)
                     .HasColumnType("NUMBER(38)")
                     .HasColumnName("USERID");
@@ -397,13 +405,13 @@ namespace PharmaFinder.Core.Data
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Pharmacyid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C007811");
+                    .HasConstraintName("SYS_C008619");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Userid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C007812");
+                    .HasConstraintName("SYS_C008620");
             });
 
             modelBuilder.Entity<Ordermed>(entity =>
@@ -431,13 +439,13 @@ namespace PharmaFinder.Core.Data
                     .WithMany(p => p.Ordermeds)
                     .HasForeignKey(d => d.Medicineid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C007833");
+                    .HasConstraintName("SYS_C008637");
 
                 entity.HasOne(d => d.Order)
                     .WithMany(p => p.Ordermeds)
                     .HasForeignKey(d => d.Orderid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C007834");
+                    .HasConstraintName("SYS_C008638");
             });
 
             modelBuilder.Entity<Pharmacy>(entity =>
@@ -508,13 +516,13 @@ namespace PharmaFinder.Core.Data
                     .WithMany(p => p.Phmeds)
                     .HasForeignKey(d => d.Medicineid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C007814");
+                    .HasConstraintName("SYS_C008622");
 
                 entity.HasOne(d => d.Pharmacy)
                     .WithMany(p => p.Phmeds)
                     .HasForeignKey(d => d.Pharmacyid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C007813");
+                    .HasConstraintName("SYS_C008621");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -593,13 +601,13 @@ namespace PharmaFinder.Core.Data
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.Roleid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C007815");
+                    .HasConstraintName("SYS_C008623");
             });
 
             modelBuilder.Entity<Usertestimonial>(entity =>
             {
                 entity.HasKey(e => e.Utestimonialid)
-                    .HasName("SYS_C007819");
+                    .HasName("SYS_C008630");
 
                 entity.ToTable("USERTESTIMONIAL");
 
@@ -616,7 +624,7 @@ namespace PharmaFinder.Core.Data
                 entity.Property(e => e.Testimonialdate)
                     .HasPrecision(6)
                     .HasColumnName("TESTIMONIALDATE")
-                    .HasDefaultValueSql("CURRENT_TIMESTAMP");
+                    .HasDefaultValueSql("CURRENT_TIMESTAMP\n   ");
 
                 entity.Property(e => e.Testimonialtext)
                     .HasMaxLength(1000)
@@ -631,7 +639,7 @@ namespace PharmaFinder.Core.Data
                     .WithMany(p => p.Usertestimonials)
                     .HasForeignKey(d => d.Userid)
                     .OnDelete(DeleteBehavior.SetNull)
-                    .HasConstraintName("SYS_C007820");
+                    .HasConstraintName("SYS_C008634");
             });
 
             OnModelCreatingPartial(modelBuilder);
