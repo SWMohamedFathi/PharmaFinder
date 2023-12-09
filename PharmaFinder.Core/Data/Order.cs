@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PharmaFinder.Core.Models
+namespace PharmaFinder.Core.Data
 {
     public partial class Order
     {
@@ -16,7 +16,6 @@ namespace PharmaFinder.Core.Models
         public DateTime? Orderdate { get; set; }
         public string? Approval { get; set; }
         public decimal? Orderprice { get; set; }
-        public string? Status { get; set; }
 
         public virtual Pharmacy? Pharmacy { get; set; }
         public virtual User? User { get; set; }
