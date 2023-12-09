@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmaFinder.Core.Data;
@@ -111,6 +112,36 @@ namespace PharmaFinder.Api.Controllers
         public async Task<IEnumerable<AllSalesByYearReport>> GetAllSalesByYearReport(int year)
         {
             return await _orderService.GetAllSalesByYearReport(year);
+        }
+
+        [HttpGet("download-Monthly-pdf")]
+        public async Task<IActionResult> DownloadMonthlyPdfReport(int month, int year)
+        {
+            try
+            {
+                var pdfBytes = await _orderService.GenerateMonthlyPdfReport(month, year);
+
+                return File(pdfBytes, "application/pdf", "monthly_sales_report.pdf");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
+        }
+
+        [HttpGet("download-Annual-pdf")]
+        public async Task<IActionResult> DownloadAnnualPdfReport(int year)
+        {
+            try
+            {
+                var pdfBytes = await _orderService.GenerateAnnualPdfReport(year);
+
+                return File(pdfBytes, "application/pdf", "Annual_sales_report.pdf");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
         }
     }
 }

@@ -1,3 +1,5 @@
+using DinkToPdf.Contracts;
+using DinkToPdf;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using PharmaFinder.Api.Settings;
@@ -46,6 +48,9 @@ builder.Services.Configure<EmailConfiguration>(configuration.GetSection("EmailCo
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddControllers();
 
+//
+builder.Services.AddSingleton<IConverter>(new SynchronizedConverter(new PdfTools()));
+//
 
 builder.Services.AddAuthentication(opt => {
     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
