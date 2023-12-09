@@ -74,5 +74,10 @@ namespace PharmaFinder.Infra.Service
         {
             return await _orderRepository.GetAllSalesByYearReport(year);
         }
+        public void ProcessPayment(int OrderdID, Bank bank)
+        {
+            _orderRepository.ProcessPayment(OrderdID,bank); 
+        }
+
     }
 }

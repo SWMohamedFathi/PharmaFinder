@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PharmaFinder.Core.Models
+namespace PharmaFinder.Core.Data
 {
     public partial class Usertestimonial
     {

@@ -40,6 +40,14 @@ namespace PharmaFinder.Api.Controllers
             _orderService.CreateOrder(order);
             return StatusCode(201);
         }
+        [HttpPost]
+        [Route("ProcessPayment")]
+        public void ProcessPayment(int OrderdID,Bank bank)
+        {
+            _orderService.ProcessPayment(OrderdID,bank);
+
+        }
+
 
         [HttpPut]
         [Route("UpdateOrder/{id}")]

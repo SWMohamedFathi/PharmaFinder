@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PharmaFinder.Core.Models
+namespace PharmaFinder.Core.Data
 {
-    public partial class About
+    public partial class Home
     {
-        public decimal Aboutid { get; set; }
+        public decimal Homeid { get; set; }
         public string? Heading1 { get; set; }
         public string? Heading2 { get; set; }
         public string? Heading3 { get; set; }

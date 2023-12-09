@@ -21,5 +21,6 @@ namespace PharmaFinder.Core.Service
         Task<IEnumerable<AnnualSalesReport>> GetAnnualSalesReport(int year);
         Task<IEnumerable<AllSalesByMonthReport>> GetAllSalesByMonthReport(int month, int year);
         Task<IEnumerable<AllSalesByYearReport>> GetAllSalesByYearReport(int year);
+        public void ProcessPayment(int OrderdID, Bank bank);
     }
 }

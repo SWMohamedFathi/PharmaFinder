@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PharmaFinder.Core.Models
+namespace PharmaFinder.Core.Data
 {
-    public partial class Ordermed
+    public partial class Phmed
     {
-        public decimal Ordermedid { get; set; }
+        public decimal Phmedid { get; set; }
+        public decimal? Pharmacyid { get; set; }
         public decimal? Medicineid { get; set; }
-        public decimal? Orderid { get; set; }
         public decimal? Quantity { get; set; }
 
         public virtual Medicine? Medicine { get; set; }
-        public virtual Order? Order { get; set; }
+        public virtual Pharmacy? Pharmacy { get; set; }
     }
 }

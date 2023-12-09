@@ -45,10 +45,7 @@ namespace PharmaFinder.Infra.Repository
             var p = new DynamicParameters();
             p.Add("UserID", orderData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("PharmacyID", orderData.Pharmacyid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("OrderDate", orderData.Orderdate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("Approval", orderData.Approval, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("OrderPrice", orderData.Orderprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.Execute("orders_package.CreateOrder", p, commandType: CommandType.StoredProcedure);
+               var result = dbContext.Connection.Execute("orders_package.CreateOrder", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateOrder(Order orderData)
@@ -66,7 +63,7 @@ namespace PharmaFinder.Infra.Repository
         public void DeleteOrder(decimal id)
         {
             var p = new DynamicParameters();
-            p.Add("OrderID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("OrdID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("orders_package.DeleteOrder", p, commandType: CommandType.StoredProcedure);
         }
         public void AcceptOrRejectOrders( Order order)
@@ -133,6 +130,20 @@ namespace PharmaFinder.Infra.Repository
 
             return result;
         }
+        public void ProcessPayment(int OrderdID,Bank bank)
+        {
+            var p=new DynamicParameters();
+            p.Add("p_OrderID", OrderdID, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("p_CardHolder", bank.Cardholder, DbType.String, direction: ParameterDirection.Input);
+            p.Add("p_CardNumber", bank.Cardnumber, DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("p_CVV", bank.Cvv, DbType.Int32, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("orders_package.ProcessPayment", p, commandType: CommandType.StoredProcedure);
+
+
+
+        }
+
+
     }
 
     

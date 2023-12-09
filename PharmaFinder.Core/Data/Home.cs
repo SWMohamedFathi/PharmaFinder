@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PharmaFinder.Core.Data
+namespace PharmaFinder.Core.Models
 {
     public partial class Home
     {

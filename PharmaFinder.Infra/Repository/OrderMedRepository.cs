@@ -37,9 +37,8 @@ namespace PharmaFinder.Infra.Repository
         public void CreateOrdermed(Ordermed ordermedData)
         {
             var p = new DynamicParameters();
-            p.Add("OrderMedID", ordermedData.Ordermedid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("MedicineID", ordermedData.Medicineid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("OrderID", ordermedData.Orderid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("MedID", ordermedData.Medicineid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("OrdID", ordermedData.Orderid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Quantity", ordermedData.Quantity, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("OrderMed_Package.CreateOrdermed", p, commandType: CommandType.StoredProcedure);
         }
@@ -57,7 +56,7 @@ namespace PharmaFinder.Infra.Repository
         public void DeleteOrdermed(decimal id)
         {
             var p = new DynamicParameters();
-            p.Add("OrderMedID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("OrdMedID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("OrderMed_Package.DeleteOrdermed", p, commandType: CommandType.StoredProcedure);
         }
     }
