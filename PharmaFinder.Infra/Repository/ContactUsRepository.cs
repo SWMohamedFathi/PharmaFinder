@@ -24,15 +24,15 @@ namespace PharmaFinder.Infra.Repository
 
         public List<Contactu> GetAllContactus()
         {
-            IEnumerable<Contactu> result = dbContext.Connection.Query<Contactu>("Contactus_Package.GetAllContactusMessages", commandType: CommandType.StoredProcedure);
+            IEnumerable<Contactu> result = dbContext.Connection.Query<Contactu>("CONTACT_US_PACKAGE.GetAllContactUsMessages", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
-
+        
         public Contactu GetContactusById(decimal id)
         {
             var p = new DynamicParameters();
             p.Add("ID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.Query<Contactu>("Contactus_Package.GetContactusMessagesById", p, commandType: CommandType.StoredProcedure);
+            var result = dbContext.Connection.Query<Contactu>("CONTACT_US_PACKAGE.GetContactusMessagesById", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
 
@@ -43,7 +43,7 @@ namespace PharmaFinder.Infra.Repository
             p.Add("Email", contactusData.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Subject", contactusData.Subject, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Message", contactusData.Message, dbType: DbType.String, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.Execute("Contactus_Package.CreateContactusMessage", p, commandType: CommandType.StoredProcedure);
+            var result = dbContext.Connection.Execute("CONTACT_US_PACKAGE.CreateContactusMessage", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateContactus(Contactu contactusData)
@@ -54,14 +54,14 @@ namespace PharmaFinder.Infra.Repository
             p.Add("Email", contactusData.Email, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Subject", contactusData.Subject, dbType: DbType.String, direction: ParameterDirection.Input);
             p.Add("Message", contactusData.Message, dbType: DbType.String, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.Execute("Contactus_Package.UpdateContactusMessage", p, commandType: CommandType.StoredProcedure);
+            var result = dbContext.Connection.Execute("CONTACT_US_PACKAGE.UpdateContactusMessage", p, commandType: CommandType.StoredProcedure);
         }
 
         public void DeleteContactus(decimal id)
         {
             var p = new DynamicParameters();
             p.Add("ID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.Execute("Contactus_Package.DeleteContactusMessage", p, commandType: CommandType.StoredProcedure);
+            var result = dbContext.Connection.Execute("CONTACT_US_PACKAGE.DeleteContactusMessage", p, commandType: CommandType.StoredProcedure);
         }
     }
 }
