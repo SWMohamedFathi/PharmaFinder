@@ -29,7 +29,7 @@ namespace PharmaFinder.Infra.Repository
         public Usertestimonial GetUsertestimonialById(decimal id)
         {
             var p = new DynamicParameters();
-            p.Add("UtestimonialID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("UTestimonial_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Query<Usertestimonial>("user_testimonial_package.GetUsertestimonialById", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
@@ -37,26 +37,26 @@ namespace PharmaFinder.Infra.Repository
         public void CreateUsertestimonial(Usertestimonial usertestimonialData)
         {
             var p = new DynamicParameters();
-            p.Add("UserID", usertestimonialData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("TestimonialText", usertestimonialData.Testimonialtext, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Status", usertestimonialData.Status, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("User_ID", usertestimonialData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Testimonial_Text", usertestimonialData.Testimonialtext, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("STATUS_", usertestimonialData.Status, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("user_testimonial_package.CreateUsertestimonial", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateUsertestimonial(Usertestimonial usertestimonialData)
         {
             var p = new DynamicParameters();
-            p.Add("UtestimonialID", usertestimonialData.Utestimonialid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("UserID", usertestimonialData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("TestimonialText", usertestimonialData.Testimonialtext, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Status", usertestimonialData.Status, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("UTestimonial_ID", usertestimonialData.Utestimonialid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("User_ID", usertestimonialData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Testimonial_Text", usertestimonialData.Testimonialtext, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("STATUS_", usertestimonialData.Status, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("user_testimonial_package.UpdateUsertestimonial", p, commandType: CommandType.StoredProcedure);
         }
 
         public void DeleteUsertestimonial(decimal id)
         {
             var p = new DynamicParameters();
-            p.Add("UtestimonialID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("UTestimonial_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("user_testimonial_package.DeleteUsertestimonial", p, commandType: CommandType.StoredProcedure);
         }
     }

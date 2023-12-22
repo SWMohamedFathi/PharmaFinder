@@ -37,25 +37,25 @@ namespace PharmaFinder.Infra.Repository
         public void CreateMedicine(Medicine medicineData)
         {
             var p = new DynamicParameters();
-            p.Add("MedicineName", medicineData.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("MedicinePrice", medicineData.Medicineprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("MedicineType", medicineData.Medicinetype, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("MedicineDescription", medicineData.Medicinedescription, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("ExpireDate", medicineData.Expiredate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("ActiveSubstance", medicineData.Activesubstance, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_Name", medicineData.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_Price", medicineData.Medicineprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Medicine_Type", medicineData.Medicinetype, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_Description", medicineData.Medicinedescription, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Expire_Date", medicineData.Expiredate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("Active_Substance", medicineData.Activesubstance, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Medicine_Package.CreateMedicine", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateMedicine(Medicine medicineData)
         {
             var p = new DynamicParameters();
-            p.Add("ID", medicineData.Medicineid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("MedicineName", medicineData.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("MedicinePrice", medicineData.Medicineprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("MedicineType", medicineData.Medicinetype, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("MedicineDescription", medicineData.Medicinedescription, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("ExpireDate", medicineData.Expiredate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
-            p.Add("ActiveSubstance", medicineData.Activesubstance, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_ID", medicineData.Medicineid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Medicine_Name", medicineData.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_Price", medicineData.Medicineprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("Medicine_Type", medicineData.Medicinetype, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_Description", medicineData.Medicinedescription, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Expire_Date", medicineData.Expiredate, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("Active_Substance", medicineData.Activesubstance, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("Medicine_Package.UpdateMedicine", p, commandType: CommandType.StoredProcedure);
         }
 

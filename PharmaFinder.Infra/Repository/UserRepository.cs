@@ -29,7 +29,7 @@ namespace PharmaFinder.Infra.Repository
         public User GetUserById(decimal id)
         {
             var p = new DynamicParameters();
-            p.Add("UserID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("User_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Query<User>("users_package.GetUserById", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
@@ -37,38 +37,38 @@ namespace PharmaFinder.Infra.Repository
         public void CreateUser(User userData)
         {
             var p = new DynamicParameters();
-            p.Add("RoleID", userData.Roleid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("ProfileImage", userData.Profileimage, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("UserName", userData.Username, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Password", userData.Password, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Email", userData.Email, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Gender", userData.Gender, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("DateOfBirth", userData.Dateofbirth, dbType: DbType.Date, direction: ParameterDirection.Input);
-            p.Add("Address", userData.Address, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("PhoneNumber", userData.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Role_ID", userData.Roleid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Profile_Image", userData.Profileimage, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("User_Name", userData.Username, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Password_", userData.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Email_", userData.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Gender_", userData.Gender, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("DateOf_Birth", userData.Dateofbirth, dbType: DbType.Date, direction: ParameterDirection.Input);
+            p.Add("Address_", userData.Address, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Phone_Number", userData.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("users_package.CreateUser", p, commandType: CommandType.StoredProcedure);
         }
 
         public void UpdateUser(User userData)
         {
             var p = new DynamicParameters();
-            p.Add("UserID", userData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("RoleID", userData.Roleid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("ProfileImage", userData.Profileimage, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("UserName", userData.Username, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Password", userData.Password, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Email", userData.Email, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("Gender", userData.Gender, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("DateOfBirth", userData.Dateofbirth, dbType: DbType.Date, direction: ParameterDirection.Input);
-            p.Add("Address", userData.Address, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("PhoneNumber", userData.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("User_ID", userData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Role_ID", userData.Roleid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Profile_Image", userData.Profileimage, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("User_Name", userData.Username, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Password_", userData.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Email_", userData.Email, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Gender_", userData.Gender, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("DateOf_Birth", userData.Dateofbirth, dbType: DbType.Date, direction: ParameterDirection.Input);
+            p.Add("Address_", userData.Address, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Phone_Number", userData.Phonenumber, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("users_package.UpdateUser", p, commandType: CommandType.StoredProcedure);
         }
 
         public void DeleteUser(decimal id)
         {
             var p = new DynamicParameters();
-            p.Add("UserID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("User_ID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("users_package.DeleteUser", p, commandType: CommandType.StoredProcedure);
         }
     }
