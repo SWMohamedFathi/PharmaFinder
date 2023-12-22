@@ -12,7 +12,6 @@ namespace PharmaFinder.Core.Service
         List<Contactu> GetAllContactus();
         Contactu GetContactusById(decimal id);
         void CreateContactus(Contactu contactusData);
-        void UpdateContactus(Contactu contactusData);
         void DeleteContactus(decimal id);
     }
 }

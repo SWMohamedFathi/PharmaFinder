@@ -33,10 +33,7 @@ namespace PharmaFinder.Infra.Service
             _contactuRepository.CreateContactus(contactuData);
         }
 
-        public void UpdateContactus(Contactu contactuData)
-        {
-            _contactuRepository.UpdateContactus(contactuData);
-        }
+
 
         public void DeleteContactus(decimal id)
         {

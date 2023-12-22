@@ -40,14 +40,7 @@ namespace PharmaFinder.Api.Controllers
                 return StatusCode(201);
             }
 
-            [HttpPut]
-            [Route("UpdateContactUs/{id}")]
-            public IActionResult UpdateContactUs(decimal id, Contactu contactUs)
-            {
-                contactUs.Contactusid = id;
-                _contactUsService.UpdateContactus(contactUs);
-                return Ok();
-            }
+
 
             [HttpDelete]
             [Route("DeleteContactUs/{id}")]
