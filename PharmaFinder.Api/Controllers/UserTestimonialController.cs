@@ -39,17 +39,16 @@ namespace PharmaFinder.Api.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateUsertestimonial/{id}")]
-        public IActionResult UpdateUsertestimonial(decimal id, Usertestimonial usertestimonial)
+        [Route("UpdateUsertestimonial")]
+        public IActionResult UpdateUsertestimonial( Usertestimonial usertestimonial)
         {
-            usertestimonial.Utestimonialid = id;
             _usertestimonialService.UpdateUsertestimonial(usertestimonial);
             return Ok();
         }
 
         [HttpPut]
         [Route("AcceptOrRejectTestimonial")]
-        public IActionResult UpdateUsertestimonial( Usertestimonial usertestimonial)
+        public IActionResult AcceptOrRejectTestimonial( Usertestimonial usertestimonial)
         {
             _usertestimonialService.UpdateUsertestimonial(usertestimonial);
             return Ok();

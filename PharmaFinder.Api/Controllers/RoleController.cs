@@ -39,10 +39,9 @@ namespace PharmaFinder.Api.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateRole/{id}")]
-        public IActionResult UpdateRole(decimal id, Role role)
+        [Route("UpdateRole")]
+        public IActionResult UpdateRole( Role role)
         {
-            role.Roleid = id;
             _roleService.UpdateRole(role);
             return Ok();
         }
