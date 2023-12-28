@@ -1,4 +1,5 @@
 ﻿using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using PharmaFinder.Core.Service;
 using System;
@@ -26,6 +27,10 @@ namespace PharmaFinder.Infra.Service
         public Ordermed GetOrdermedById(decimal id)
         {
             return _orderMedRepository.GetOrdermedById(id);
+        }
+        public GetAllOrderMedsByOrderID GetAllOrderMedicineByOrderID(decimal id)
+        {
+            return _orderMedRepository.GetAllOrderMedicineByOrderID(id);
         }
 
         public void CreateOrdermed(Ordermed ordermedData)

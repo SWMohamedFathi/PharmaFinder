@@ -10,6 +10,7 @@ namespace PharmaFinder.Core.Service
 {
     public interface IOrdersService
     {
+        List<GetALLInformationOrders> GetAllInformationOrders();
         List<Order> GetAllOrders();
         Order GetOrderById(decimal id);
         void CreateOrder(Order orderData);

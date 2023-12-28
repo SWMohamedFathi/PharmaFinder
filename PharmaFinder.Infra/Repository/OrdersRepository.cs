@@ -32,6 +32,12 @@ namespace PharmaFinder.Infra.Repository
             return result.ToList();
         }
 
+        public List<GetALLInformationOrders> GetAllInformationOrders()
+        {
+            IEnumerable<GetALLInformationOrders> result = dbContext.Connection.Query<GetALLInformationOrders>("orders_package.GetAllOrdersAndOrderMed", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public Order GetOrderById(decimal id)
         {
             var p = new DynamicParameters();
@@ -74,7 +80,7 @@ namespace PharmaFinder.Infra.Repository
             var result = dbContext.Connection.Execute("orders_package.AcceptOrRejectOrders", p, commandType: CommandType.StoredProcedure);
 
         }
-
+ 
 
         public List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search)
         {

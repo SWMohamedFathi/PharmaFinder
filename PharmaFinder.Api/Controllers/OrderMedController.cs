@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using PharmaFinder.Core.Service;
 
@@ -30,6 +31,14 @@ namespace PharmaFinder.Api.Controllers
         {
             return _orderMedService.GetOrdermedById(id);
         }
+        [HttpGet]
+        [Route("GetAllOrderMedByOrderID/{id}")]
+        public GetAllOrderMedsByOrderID GetAllOrderMedicineByOrderID(decimal id)
+        {
+            return _orderMedService.GetAllOrderMedicineByOrderID(id);
+        }
+
+
 
         [HttpPost]
         [Route("CreateOrdermed")]

@@ -1,4 +1,5 @@
 ﻿using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace PharmaFinder.Core.Repository
 {
     public interface IOrderMedRepository
     {
+         GetAllOrderMedsByOrderID GetAllOrderMedicineByOrderID(decimal id);
         List<Ordermed> GetAllOrdermeds();
         Ordermed GetOrdermedById(decimal id);
         void CreateOrdermed(Ordermed ordermedData);
