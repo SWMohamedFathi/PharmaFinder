@@ -39,7 +39,6 @@ namespace PharmaFinder.Infra.Repository
             var p = new DynamicParameters();
             p.Add("User_ID", usertestimonialData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("Testimonial_Text", usertestimonialData.Testimonialtext, dbType: DbType.String, direction: ParameterDirection.Input);
-            p.Add("STATUS_", usertestimonialData.Status, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("user_testimonial_package.CreateUsertestimonial", p, commandType: CommandType.StoredProcedure);
         }
 
@@ -52,7 +51,13 @@ namespace PharmaFinder.Infra.Repository
             p.Add("STATUS_", usertestimonialData.Status, dbType: DbType.String, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("user_testimonial_package.UpdateUsertestimonial", p, commandType: CommandType.StoredProcedure);
         }
-
+        public void AcceptOrRejectTestimonial(Usertestimonial usertestimonialData)
+        {
+            var p = new DynamicParameters();
+            p.Add("ID", usertestimonialData.Utestimonialid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("status_", usertestimonialData.Status, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("user_testimonial_package.UpdateUsertestimonial", p, commandType: CommandType.StoredProcedure);
+        }
         public void DeleteUsertestimonial(decimal id)
         {
             var p = new DynamicParameters();

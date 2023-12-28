@@ -43,13 +43,10 @@ namespace PharmaFinder.Api.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateUser/{id}")]
-        public IActionResult UpdateUser(decimal id, User user)
+        [Route("UpdateUser")]
+        public IActionResult UpdateUser(User user)
         {
-            if (id != user.Userid)
-            {
-                return BadRequest();
-            }
+
 
             _userService.UpdateUser(user);
             return Ok();

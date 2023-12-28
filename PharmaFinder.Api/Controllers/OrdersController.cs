@@ -51,10 +51,9 @@ namespace PharmaFinder.Api.Controllers
 
 
         [HttpPut]
-        [Route("UpdateOrder/{id}")]
-        public IActionResult UpdateOrder(decimal id, Order order)
+        [Route("UpdateOrder")]
+        public IActionResult UpdateOrder( Order order)
         {
-            order.Orderid = id;
             _orderService.UpdateOrder(order);
             return Ok();
         }

@@ -13,6 +13,7 @@ namespace PharmaFinder.Core.Repository
         Usertestimonial GetUsertestimonialById(decimal id);
         void CreateUsertestimonial(Usertestimonial usertestimonialData);
         void UpdateUsertestimonial(Usertestimonial usertestimonialData);
+        public void AcceptOrRejectTestimonial(Usertestimonial usertestimonialData);
         void DeleteUsertestimonial(decimal id);
     }
 }

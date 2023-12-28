@@ -43,5 +43,10 @@ namespace PharmaFinder.Infra.Service
         {
             _usertestimonialRepository.DeleteUsertestimonial(id);
         }
+        public void AcceptOrRejectTestimonial(Usertestimonial usertestimonial)
+        {
+            _usertestimonialRepository.AcceptOrRejectTestimonial(usertestimonial);
+        }
+
     }
 }
