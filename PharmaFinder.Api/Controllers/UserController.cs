@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
 using PharmaFinder.Core.Service;
 using PharmaFinder.Infra.Service;
@@ -11,10 +12,12 @@ namespace PharmaFinder.Api.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly IDbContext dbContext;
 
-        public UserController(IUserService userService)
+        public UserController(IUserService userService, IDbContext _dbContext)
         {
             _userService = userService;
+            this.dbContext = _dbContext;
         }
 
         [HttpGet]
@@ -60,5 +63,20 @@ namespace PharmaFinder.Api.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("UploadImage")]
+        public User UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine("C:\\Users\\Amjad\\pharmafinder-frontend\\PharmaFinder-Angular\\src\\assets\\ProfilePicture");
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            User item = new User();
+            item.Profileimage = fileName;
+            return item;
+        }
     }
 }
