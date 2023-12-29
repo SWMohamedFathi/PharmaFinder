@@ -48,6 +48,6 @@ namespace PharmaFinder.Infra.Service
         {
             return _pharmacyRepository.SearchPharmacyName(search);
         }
-
+       
     }
 }
