@@ -349,6 +349,10 @@ namespace PharmaFinder.Core.Data
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("MEDICINEDESCRIPTION");
+                entity.Property(e => e.Imagename)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false)
+                    .HasColumnName("IMAGENAME");
 
                 entity.Property(e => e.Medicinename)
                     .HasMaxLength(100)

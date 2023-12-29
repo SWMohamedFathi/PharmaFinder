@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Service;
 using PharmaFinder.Infra.Service;
 
@@ -18,8 +19,10 @@ namespace PharmaFinder.Api.Controllers
         }
 
         [HttpPost("ReadPrescription")]
-        public IActionResult ReadPrescription(IFormFile file)
+        public IActionResult ReadPrescription()
         {
+            var file = Request.Form.Files[0];
+            
             try
             {
                 if (file == null || file.Length <= 0)
@@ -32,8 +35,12 @@ namespace PharmaFinder.Api.Controllers
 
                     List<String> extractedPdf = _prescriptionReadService.ExtractWordsFromPDF(stream);
                     List<Medicine> medicines = _prescriptionReadService.FindMatchingMedicines(extractedPdf);
-                    
-                    return Ok(medicines);
+                    List<PharmaMedResult> medicinesDetails = new List<PharmaMedResult>();
+                    foreach (var item in medicines)
+                    {
+                        medicinesDetails.AddRange(_prescriptionReadService.GetMedicineDetails(item.Medicineid));
+                    }
+                    return Ok(medicinesDetails);
                 }
             }
             catch (Exception ex)

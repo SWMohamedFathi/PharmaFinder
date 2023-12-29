@@ -10,6 +10,8 @@ using PharmaFinder.Infra.Common;
 using PharmaFinder.Infra.Repository;
 using PharmaFinder.Infra.Service;
 using System.Text;
+using Microsoft.AspNetCore.Http.Features;
+
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
@@ -27,6 +29,7 @@ builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserTestmonialRepository, UserTestmonialRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IOrderMedRepository, OrderMedRepository>();
+builder.Services.AddScoped<IReadPrescriptionRepository, ReadPrescriptionRepository>();
 
 //Services
 builder.Services.AddScoped<IBankService, BankService>();
@@ -40,6 +43,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IOrderMedService, OrderMedService>();
 builder.Services.AddScoped<IReadPrescriptionService, ReadPrescriptionService>();
 
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddScoped<ILoginService, LoginService>();
@@ -50,6 +54,12 @@ builder.Services.AddControllers();
 
 //
 builder.Services.AddSingleton<IConverter>(new SynchronizedConverter(new PdfTools()));
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = long.MaxValue;
+    options.BufferBodyLengthLimit = int.MaxValue;
+    options.ValueLengthLimit = int.MaxValue;
+});
 //
 
 
