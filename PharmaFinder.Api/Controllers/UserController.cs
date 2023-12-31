@@ -56,6 +56,20 @@ namespace PharmaFinder.Api.Controllers
             _userService.DeleteUser(id);
             return Ok();
         }
-
+        [Route("uploadImage")]
+        [HttpPost]
+        public User UploadIMage()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular\\src\\assets\\Images", fileName);
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            User item = new User();
+            item.Profileimage = fileName;
+            return item;
+        }
     }
 }
