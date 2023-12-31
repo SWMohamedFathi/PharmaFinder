@@ -24,6 +24,10 @@ namespace PharmaFinder.Infra.Service
             _orderRepository = orderRepository;
             _pdfConverter = pdfConverter;
         }
+        public int CalculateTotalOrderPrice()
+        {
+            return _orderRepository.CalculateTotalOrderPrice();
+        }
         public List<GetALLInformationOrders> GetAllInformationOrders()
         {
             return _orderRepository.GetAllInformationOrders();

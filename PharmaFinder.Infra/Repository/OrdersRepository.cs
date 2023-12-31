@@ -2,6 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging;
 using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
 using PharmaFinder.Core.DTO;
@@ -24,7 +25,17 @@ namespace PharmaFinder.Infra.Repository
         public OrdersRepository(IDbContext _dbContext)
         {
             this.dbContext = _dbContext;
+
         }
+
+
+        public int CalculateTotalOrderPrice()
+        {
+            var result = dbContext.Connection.ExecuteScalar<int>("orders_package.CalculateTotalOrderPrice", commandType: CommandType.StoredProcedure);
+            return result;
+        }
+
+
 
         public List<Order> GetAllOrders()
         {

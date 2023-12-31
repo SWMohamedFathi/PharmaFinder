@@ -26,6 +26,14 @@ namespace PharmaFinder.Api.Controllers
             return _orderService.GetAllInformationOrders();
         }
 
+        [HttpGet]
+        [Route("CalculateTotalOrderPrice")]
+        public int CalculateTotalOrderPrice()
+        {
+            return _orderService.CalculateTotalOrderPrice();
+        }
+
+
 
         [HttpGet]
         [Route("GetAllOrders")]

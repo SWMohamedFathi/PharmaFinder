@@ -9,6 +9,7 @@ namespace PharmaFinder.Core.Repository
 {
     public interface IUserRepository
     {
+        public int GetUserCount();
         List<User> GetAllUsers();
         User GetUserById(decimal id);
         void CreateUser(User userData);

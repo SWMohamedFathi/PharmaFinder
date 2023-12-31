@@ -10,8 +10,9 @@ namespace PharmaFinder.Core.Repository
 {
     public interface IOrdersRepository
     {
-        List<GetALLInformationOrders> GetAllInformationOrders();
+        public int CalculateTotalOrderPrice();
 
+        List<GetALLInformationOrders> GetAllInformationOrders();
         List<Order> GetAllOrders();
         Order GetOrderById(decimal id);
         void CreateOrder(Order orderData);

@@ -24,6 +24,14 @@ namespace PharmaFinder.Api.Controllers
             return _userService.GetAllUsers();
         }
 
+            [HttpGet]
+            [Route("GetUserCount")]
+        public int GetUserCount()
+        {
+            return _userService.GetUserCount();
+            }
+
+
         [HttpGet]
         [Route("GetUserById/{id}")]
         public ActionResult<User> GetUserById(decimal id)
