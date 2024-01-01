@@ -14,6 +14,10 @@ namespace PharmaFinder.Infra.Service
     {
         private readonly IPharmacyRepository _pharmacyRepository;
 
+        public int GetPharmacyCount()
+        {
+            return _pharmacyRepository.GetPharmacyCount();
+        }
         public PharmacyService(IPharmacyRepository pharmacyRepository)
         {
             _pharmacyRepository = pharmacyRepository;

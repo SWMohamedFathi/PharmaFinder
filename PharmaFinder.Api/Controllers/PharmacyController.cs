@@ -30,6 +30,13 @@ namespace PharmaFinder.Api.Controllers
         {
             return _pharmacyService.GetPharmacyById(id);
         }
+        [HttpGet]
+        [Route("GetPharmacyCount")]
+        public int GetPharmacyCount()
+        {
+            return _pharmacyService.GetPharmacyCount();
+        }
+
 
         [HttpPost]
         [Route("CreatePharmacy")]
