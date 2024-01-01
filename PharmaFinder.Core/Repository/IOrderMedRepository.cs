@@ -10,7 +10,7 @@ namespace PharmaFinder.Core.Repository
 {
     public interface IOrderMedRepository
     {
-         GetAllOrderMedsByOrderID GetAllOrderMedicineByOrderID(decimal id);
+        public List<GetAllOrderMedsByOrderID> GetAllOrderMedicineByOrderID(decimal id);
         List<Ordermed> GetAllOrdermeds();
         Ordermed GetOrdermedById(decimal id);
         void CreateOrdermed(Ordermed ordermedData);

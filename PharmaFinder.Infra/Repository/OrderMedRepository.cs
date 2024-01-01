@@ -34,14 +34,20 @@ namespace PharmaFinder.Infra.Repository
             var result = dbContext.Connection.Query<Ordermed>("OrderMed_Package.GetOrdermedById", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
-        public GetAllOrderMedsByOrderID GetAllOrderMedicineByOrderID(decimal id)
+        public List<GetAllOrderMedsByOrderID> GetAllOrderMedicineByOrderID(decimal id)
         {
             var p = new DynamicParameters();
             p.Add("ID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.Query<GetAllOrderMedsByOrderID>("OrderMed_Package.GetAllOrderMedsByOrderId", p, commandType: CommandType.StoredProcedure);
-            return result.FirstOrDefault();
+
+            IEnumerable<GetAllOrderMedsByOrderID> result = dbContext.Connection.Query<GetAllOrderMedsByOrderID>(
+                "OrderMed_Package.GetAllOrderMedsByOrderId",
+                p,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return result.ToList();
         }
-        
+
         public void CreateOrdermed(Ordermed ordermedData)
         {
             var p = new DynamicParameters();

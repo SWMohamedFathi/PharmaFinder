@@ -33,7 +33,7 @@ namespace PharmaFinder.Api.Controllers
         }
         [HttpGet]
         [Route("GetAllOrderMedByOrderID/{id}")]
-        public GetAllOrderMedsByOrderID GetAllOrderMedicineByOrderID(decimal id)
+        public List<GetAllOrderMedsByOrderID> GetAllOrderMedicineByOrderID(decimal id)
         {
             return _orderMedService.GetAllOrderMedicineByOrderID(id);
         }

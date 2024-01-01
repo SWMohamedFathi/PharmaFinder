@@ -28,10 +28,11 @@ namespace PharmaFinder.Infra.Service
         {
             return _orderMedRepository.GetOrdermedById(id);
         }
-        public GetAllOrderMedsByOrderID GetAllOrderMedicineByOrderID(decimal id)
+        public List<GetAllOrderMedsByOrderID> GetAllOrderMedicineByOrderID(decimal id)
         {
             return _orderMedRepository.GetAllOrderMedicineByOrderID(id);
         }
+
 
         public void CreateOrdermed(Ordermed ordermedData)
         {
