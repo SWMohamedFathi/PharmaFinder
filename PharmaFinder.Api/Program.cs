@@ -52,6 +52,9 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton<IConverter>(new SynchronizedConverter(new PdfTools()));
 //
 
+builder.Services.AddScoped<IJWTRepository, JWTRepository>();
+builder.Services.AddScoped<IJWTService, JWTService>();
+
 
 builder.Services.AddCors(corsOptions =>
 {
@@ -89,10 +92,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 
 app.UseAuthorization();
 app.UseCors("policy");
 app.MapControllers();
 
 app.Run();
-app.UseAuthentication();
