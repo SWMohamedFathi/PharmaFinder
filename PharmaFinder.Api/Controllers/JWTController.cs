@@ -14,6 +14,7 @@ namespace PharmaFinder.Api.Controllers
         {
             this.jwtservice = jwtservice;
         }
+
         [HttpPost]
         public IActionResult Auth([FromBody] User user)
         {

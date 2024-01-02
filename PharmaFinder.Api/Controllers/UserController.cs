@@ -7,8 +7,10 @@ using PharmaFinder.Infra.Service;
 
 namespace PharmaFinder.Api.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
+
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -66,62 +68,19 @@ namespace PharmaFinder.Api.Controllers
 
         [HttpPost]
         [Route("UploadImage")]
-        //public User UploadImage()
-        //{
-        //    var file = Request.Form.Files[0];
-        //    var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-        //    var fullPath = Path.Combine("C:\\Users\\Amjad\\pharmafinder-frontend\\PharmaFinder-Angular\\src\\assets\\ProfilePicture");
-        //    using (var stream = new FileStream(fullPath, FileMode.Create))
-        //    {
-        //        file.CopyTo(stream);
-        //    }
-        //    User item = new User();
-        //    item.Profileimage = fileName;
-        //    return item;
-        //}
         public User UploadImage()
         {
-            //var file = Request.Form.Files[0];
-            //var fileName = Guid.NewGuid().ToString() +"_" + file.FileName;
-            //var fullPath = Path.Combine("C:\\Users\\Amjad\\LH\\TheLearningHub-FrontEnd\\src\\assets\\Images");
-            //using (var stream = new FileStream(fullPath,FileMode.Create))
-            //{
-            //    file.CopyTo(stream);
-            //}
-            //Course item = new Course();
-            //item.Imagename = fileName;
-            //return item;
-            try
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine("C:\\Users\\Amjad\\pharmafinder-frontend\\PharmaFinder-Angular\\src\\assets\\ProfilePicture");
+            using (var stream = new FileStream(fullPath, FileMode.Create))
             {
-                var file = Request.Form.Files[0];
-                var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                var uploadDirectory = Path.Combine("C:\\Users\\Amjad\\LH\\TheLearningHub-FrontEnd\\src\\assets\\Images");
-
-                // Log the upload directory for diagnostic purposes
-                Console.WriteLine($"Upload Directory: {uploadDirectory}");
-
-                if (!Directory.Exists(uploadDirectory))
-                {
-                    Directory.CreateDirectory(uploadDirectory);
-                }
-
-                var fullPath = Path.Combine(uploadDirectory, fileName);
-
-                using (var stream = new FileStream(fullPath, FileMode.Create))
-                {
-                    file.CopyTo(stream);
-                }
-
-                User item = new User();
-                item.Profileimage = fileName;
-                return item;
+                file.CopyTo(stream);
             }
-            catch (Exception ex)
-            {
-                // Log the exception for diagnostic purposes
-                Console.WriteLine($"Exception: {ex.Message}");
-                return null;
-            }
+            User item = new User();
+            item.Profileimage = fileName;
+            return item;
         }
+
     }
 }

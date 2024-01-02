@@ -9,6 +9,7 @@ namespace PharmaFinder.Core.Repository
 {
     public interface IJWTRepository
     {
+
         User Auth(User user);
      
     }

@@ -7,6 +7,7 @@ namespace PharmaFinder.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class UserTestimonialController : ControllerBase
     {
         private readonly IUserTestimonialService _usertestimonialService;

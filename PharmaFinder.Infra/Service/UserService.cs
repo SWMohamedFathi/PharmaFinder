@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace PharmaFinder.Infra.Service
 {
+
     public class UserService:IUserService
     {
         private readonly IUserRepository _userRepository;

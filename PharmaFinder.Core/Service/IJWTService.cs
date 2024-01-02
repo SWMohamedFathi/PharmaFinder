@@ -10,6 +10,7 @@ namespace PharmaFinder.Core.Service
 {
     public interface IJWTService
     {
+
         string Auth(User user);
     }
 }

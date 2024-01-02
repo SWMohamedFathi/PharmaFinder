@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace PharmaFinder.Infra.Repository
 {
+
     public class JWTRepository : IJWTRepository
     {
         private readonly IDbContext dbContext;

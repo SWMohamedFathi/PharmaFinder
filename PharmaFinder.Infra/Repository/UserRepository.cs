@@ -34,6 +34,8 @@ namespace PharmaFinder.Infra.Repository
             return result.FirstOrDefault();
         }
 
+
+
         public void CreateUser(User userData)
         {
             var p = new DynamicParameters();
