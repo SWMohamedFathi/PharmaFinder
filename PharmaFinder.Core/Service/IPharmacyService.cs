@@ -10,6 +10,8 @@ namespace PharmaFinder.Core.Service
 {
     public interface IPharmacyService
     {
+        int GetPharmacyCount();
+
         List<Pharmacy> GetAllPharmacies();
         Pharmacy GetPharmacyById(decimal id);
         void CreatePharmacy(Pharmacy pharmacyData);

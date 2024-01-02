@@ -57,100 +57,21 @@ namespace PharmaFinder.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("CONTENT1");
 
-                entity.Property(e => e.Content2)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false)
-                    .HasColumnName("CONTENT2");
-
-                entity.Property(e => e.Content3)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false)
-                    .HasColumnName("CONTENT3");
-
-                entity.Property(e => e.Content4)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false)
-                    .HasColumnName("CONTENT4");
-
-                entity.Property(e => e.Content5)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false)
-                    .HasColumnName("CONTENT5");
+            
 
                 entity.Property(e => e.Heading1)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("HEADING1");
 
-                entity.Property(e => e.Heading2)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("HEADING2");
-
-                entity.Property(e => e.Heading3)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("HEADING3");
-
-                entity.Property(e => e.Heading4)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("HEADING4");
-
-                entity.Property(e => e.Heading5)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("HEADING5");
+          
 
                 entity.Property(e => e.Image1)
                     .HasMaxLength(200)
                     .IsUnicode(false)
                     .HasColumnName("IMAGE1");
 
-                entity.Property(e => e.Image10)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE10");
-
-                entity.Property(e => e.Image2)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE2");
-
-                entity.Property(e => e.Image3)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE3");
-
-                entity.Property(e => e.Image4)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE4");
-
-                entity.Property(e => e.Image5)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE5");
-
-                entity.Property(e => e.Image6)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE6");
-
-                entity.Property(e => e.Image7)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE7");
-
-                entity.Property(e => e.Image8)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE8");
-
-                entity.Property(e => e.Image9)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE9");
+             
             });
 
             modelBuilder.Entity<Bank>(entity =>
@@ -231,100 +152,20 @@ namespace PharmaFinder.Core.Data
                     .IsUnicode(false)
                     .HasColumnName("CONTENT1");
 
-                entity.Property(e => e.Content2)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false)
-                    .HasColumnName("CONTENT2");
-
-                entity.Property(e => e.Content3)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false)
-                    .HasColumnName("CONTENT3");
-
-                entity.Property(e => e.Content4)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false)
-                    .HasColumnName("CONTENT4");
-
-                entity.Property(e => e.Content5)
-                    .HasMaxLength(1000)
-                    .IsUnicode(false)
-                    .HasColumnName("CONTENT5");
+              
 
                 entity.Property(e => e.Heading1)
                     .HasMaxLength(50)
                     .IsUnicode(false)
                     .HasColumnName("HEADING1");
 
-                entity.Property(e => e.Heading2)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("HEADING2");
-
-                entity.Property(e => e.Heading3)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("HEADING3");
-
-                entity.Property(e => e.Heading4)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("HEADING4");
-
-                entity.Property(e => e.Heading5)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("HEADING5");
 
                 entity.Property(e => e.Image1)
                     .HasMaxLength(200)
                     .IsUnicode(false)
                     .HasColumnName("IMAGE1");
 
-                entity.Property(e => e.Image10)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE10");
-
-                entity.Property(e => e.Image2)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE2");
-
-                entity.Property(e => e.Image3)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE3");
-
-                entity.Property(e => e.Image4)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE4");
-
-                entity.Property(e => e.Image5)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE5");
-
-                entity.Property(e => e.Image6)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE6");
-
-                entity.Property(e => e.Image7)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE7");
-
-                entity.Property(e => e.Image8)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE8");
-
-                entity.Property(e => e.Image9)
-                    .HasMaxLength(200)
-                    .IsUnicode(false)
-                    .HasColumnName("IMAGE9");
+             
             });
 
             modelBuilder.Entity<Medicine>(entity =>
@@ -349,6 +190,10 @@ namespace PharmaFinder.Core.Data
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("MEDICINEDESCRIPTION");
+                entity.Property(e => e.Imagename)
+                    .HasMaxLength(1000)
+                    .IsUnicode(false)
+                    .HasColumnName("IMAGENAME");
 
                 entity.Property(e => e.Medicinename)
                     .HasMaxLength(100)

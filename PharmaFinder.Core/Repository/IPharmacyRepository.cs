@@ -10,6 +10,8 @@ namespace PharmaFinder.Core.Repository
 {
     public interface IPharmacyRepository
     {
+        public int GetPharmacyCount();
+
         List<Pharmacy> GetAllPharmacies();
         Pharmacy GetPharmacyById(decimal id);
         void CreatePharmacy(Pharmacy pharmacyData);

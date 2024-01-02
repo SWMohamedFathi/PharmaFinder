@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,19 @@ namespace PharmaFinder.Infra.Repository
             p.Add("OrderMedID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Query<Ordermed>("OrderMed_Package.GetOrdermedById", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
+        }
+        public List<GetAllOrderMedsByOrderID> GetAllOrderMedicineByOrderID(decimal id)
+        {
+            var p = new DynamicParameters();
+            p.Add("ID", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+
+            IEnumerable<GetAllOrderMedsByOrderID> result = dbContext.Connection.Query<GetAllOrderMedsByOrderID>(
+                "OrderMed_Package.GetAllOrderMedsByOrderId",
+                p,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return result.ToList();
         }
 
         public void CreateOrdermed(Ordermed ordermedData)

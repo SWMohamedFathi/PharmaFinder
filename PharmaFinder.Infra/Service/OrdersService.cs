@@ -24,6 +24,14 @@ namespace PharmaFinder.Infra.Service
             _orderRepository = orderRepository;
             _pdfConverter = pdfConverter;
         }
+        public int CalculateTotalOrderPrice()
+        {
+            return _orderRepository.CalculateTotalOrderPrice();
+        }
+        public List<GetALLInformationOrders> GetAllInformationOrders()
+        {
+            return _orderRepository.GetAllInformationOrders();
+        }
 
         public List<Order> GetAllOrders()
         {
@@ -49,6 +57,7 @@ namespace PharmaFinder.Infra.Service
         {
             _orderRepository.DeleteOrder(id);
         }
+
         public void AcceptOrRejectOrders(Order order)
         {
             _orderRepository.AcceptOrRejectOrders(order); 
@@ -225,6 +234,7 @@ namespace PharmaFinder.Infra.Service
 
             return htmlBuilder.ToString();
         }
+
 
     }
 }

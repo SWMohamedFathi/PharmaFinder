@@ -16,6 +16,11 @@ namespace PharmaFinder.Infra.Repository
     {
         private readonly IDbContext dbContext;
 
+        public int GetPharmacyCount()
+        {
+            var result = dbContext.Connection.ExecuteScalar<int>("Pharmacy_Package.GetpharmacyCount", commandType: CommandType.StoredProcedure);
+            return result;
+        }
         public PharmacyRepository(IDbContext _dbContext)
         {
             this.dbContext = _dbContext;

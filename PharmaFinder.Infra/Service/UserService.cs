@@ -19,6 +19,13 @@ namespace PharmaFinder.Infra.Service
             _userRepository = userRepository;
         }
 
+
+        public int GetUserCount()
+        {
+            return _userRepository.GetUserCount();
+        }
+
+
         public List<User> GetAllUsers()
         {
             return _userRepository.GetAllUsers();

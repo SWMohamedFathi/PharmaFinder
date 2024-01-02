@@ -26,6 +26,13 @@ namespace PharmaFinder.Infra.Repository
             return result.ToList();
         }
 
+        public int GetUserCount()
+        {
+            var result = dbContext.Connection.ExecuteScalar<int>("users_package.GetUserCount", commandType: CommandType.StoredProcedure);
+            return result;
+        }
+
+
         public User GetUserById(decimal id)
         {
             var p = new DynamicParameters();
