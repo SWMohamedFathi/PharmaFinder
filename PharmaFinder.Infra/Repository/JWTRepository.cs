@@ -23,7 +23,7 @@ namespace PharmaFinder.Infra.Repository
         public User Auth(User user)
         {
             var p = new DynamicParameters();
-            p.Add("User_NAME", user.Username, dbType: DbType.String, direction: ParameterDirection.Input); p.Add("PASS", user.Password, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("E_mail", user.Email, dbType: DbType.String, direction: ParameterDirection.Input); ; p.Add("PASS", user.Password, dbType: DbType.String, direction: ParameterDirection.Input);
             IEnumerable<User> result = dbContext.Connection.Query<User>("users_package.User_Login", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }

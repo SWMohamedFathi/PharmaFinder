@@ -6,6 +6,7 @@ namespace PharmaFinder.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class RequiresClaimAttribute : Attribute, IAuthorizationFilter
     {
         private readonly string _claimName;
