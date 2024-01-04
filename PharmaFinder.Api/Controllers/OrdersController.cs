@@ -157,5 +157,13 @@ namespace PharmaFinder.Api.Controllers
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
+
+        [HttpPost]
+        [Route("SalesSearch2")]
+        public List<SalesSearch2> SalesSearch2(SalesSearch2 search)
+        {
+            return _orderService.SalesSearch2(search);
+        }
+
     }
 }

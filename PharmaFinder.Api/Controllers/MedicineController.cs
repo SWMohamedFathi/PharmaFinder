@@ -53,6 +53,9 @@ namespace PharmaFinder.Api.Controllers
             _medicineService.DeleteMedicine(id);
             return Ok();
         }
+
+
+
         [Route("uploadImage")]
         [HttpPost]
         public Medicine UploadIMage()
