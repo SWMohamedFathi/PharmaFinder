@@ -19,6 +19,7 @@ namespace PharmaFinder.Core.DTO
         public decimal? Medicineid { get; set; }
         public decimal? Pharmacyid { get; set; }
         public decimal? Quantity { get; set; }
+        public decimal? Distacne { get; set; }
 
 
 
