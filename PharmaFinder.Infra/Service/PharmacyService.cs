@@ -79,5 +79,6 @@ namespace PharmaFinder.Infra.Service
             return _pharmacyRepository.SalesSearch(search);
         }
 
+
     }
 }

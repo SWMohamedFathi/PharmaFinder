@@ -95,23 +95,32 @@ namespace PharmaFinder.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("idphar", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            IEnumerable<GetAllMedicineInPharmacy> result = dbContext.Connection.Query<GetAllMedicineInPharmacy>("User_Pharamcy.GetAllMedcineInPharmmacy", commandType: CommandType.StoredProcedure);
+
+            // Pass the parameters to the stored procedure
+            IEnumerable<GetAllMedicineInPharmacy> result = dbContext.Connection.Query<GetAllMedicineInPharmacy>(
+                "User_Pharamcy.GETALLMEDCINEINPHARMMACY",
+                p,
+                commandType: CommandType.StoredProcedure
+            );
+
             return result.ToList();
         }
+
 
         public List<Order> GetAllOrdersInPharmmacy(decimal id)
         {
             var p = new DynamicParameters();
             p.Add("idphar", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            IEnumerable<Order> result = dbContext.Connection.Query<Order>("User_Pharamcy.GetAllOrdersInPharmacy", commandType: CommandType.StoredProcedure);
+            IEnumerable<Order> result = dbContext.Connection.Query<Order>("User_Pharamcy.GETALLORDERSINPHARMMACY", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
         public int GetMedicineCountInPharmacy(decimal id)
         {
             var p = new DynamicParameters();
-            p.Add("idphar", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.ExecuteScalar<int>("User_Pharamcy.GetMedicineCount", commandType: CommandType.StoredProcedure);
+            p.Add("idphar", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.ExecuteScalar<int>("User_Pharamcyll.GetMedcineCount", p, commandType: CommandType.StoredProcedure);
+
             return result;
         }
 
@@ -119,7 +128,7 @@ namespace PharmaFinder.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("idphar", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.ExecuteScalar<int>("User_Pharamcy.SalesPharmacy", commandType: CommandType.StoredProcedure);
+            var result = dbContext.Connection.ExecuteScalar<int>("User_Pharamcy.salesPharmacy", p, commandType: CommandType.StoredProcedure);
             return result;
         }
         
@@ -130,7 +139,7 @@ namespace PharmaFinder.Infra.Repository
             p.Add("idphar", pharmacyId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("idphar", orderId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
 
-            IEnumerable<GetAllOrderMedsByOrderIdInPharmacy> result = dbContext.Connection.Query<GetAllOrderMedsByOrderIdInPharmacy>("User_Pharamcy.GetAllOrderMedsByOrderIdInPharmacy", commandType: CommandType.StoredProcedure);
+            IEnumerable<GetAllOrderMedsByOrderIdInPharmacy> result = dbContext.Connection.Query<GetAllOrderMedsByOrderIdInPharmacy>("User_Pharamcy.GetAllOrderMedsByOrderIdInPharm", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
 
@@ -138,10 +147,13 @@ namespace PharmaFinder.Infra.Repository
         public List<SalesSearchInPharmacy> SalesSearch(SalesSearch2 search)
         {
             var p = new DynamicParameters();
+            p.Add("idphar", search.idphar, DbType.Int32, direction: ParameterDirection.Input);
             p.Add("DateTo", search.DateTo, DbType.Date, direction: ParameterDirection.Input);
             p.Add("DateFrom", search.DateFrom, DbType.Date, direction: ParameterDirection.Input);
-            IEnumerable<SalesSearchInPharmacy> result = dbContext.Connection.Query<SalesSearchInPharmacy>("orders_package.SalesSearch", p, commandType: CommandType.StoredProcedure);
+            IEnumerable<SalesSearchInPharmacy> result = dbContext.Connection.Query<SalesSearchInPharmacy>("User_Pharamcy.SalesSearch", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
+
+
     }
 }
