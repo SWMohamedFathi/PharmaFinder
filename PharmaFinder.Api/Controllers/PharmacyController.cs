@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using iTextSharp.text.pdf;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmaFinder.Core.Data;
 using PharmaFinder.Core.DTO;
@@ -69,6 +70,52 @@ namespace PharmaFinder.Api.Controllers
         {
             return _pharmacyService.SearchPharmacyName(search);
         }
+
+
+        [HttpGet]
+        [Route("GetAllMedcineInPharmmacy/{id}")]
+        public List<GetAllMedicineInPharmacy> GetAllMedcineInPharmmacy(decimal id)
+        {
+            return _pharmacyService.GetAllMedcineInPharmmacy(id);
+        }
+        [HttpGet]
+        [Route("GetAllOrdersInPharmmacy/{id}")]
+        public List<Order> GetAllOrdersInPharmmacy(decimal id)
+        {
+            return _pharmacyService.GetAllOrdersInPharmmacy(id);
+        }
+
+        [HttpGet]
+        [Route("GetMedicineCountInPharmacy/{id}")]
+        public int GetMedicineCountInPharmacy(decimal id)
+        {
+            return _pharmacyService.GetMedicineCountInPharmacy(id);
+        }
+
+        [HttpGet]
+        [Route("SalesPharmacy/{id}")]
+        public int SalesPharmacy(decimal id)
+        {
+            return _pharmacyService.SalesPharmacy(id);
+        }
+        [HttpPost]
+        [Route("GetAllOrderMedsByOrderIdInPharmacy/{pharmacyId}/{orderId}")]
+        public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(decimal pharmacyId, decimal orderId)
+        {
+            // Use 'pharmacyId' and 'orderId' in your logic
+            return _pharmacyService.GetAllOrderMedsByOrderIdInPharmacy(pharmacyId, orderId);
+        }
+
+        [HttpPost]
+        [Route("SalesSearch")]
+        public List<SalesSearchInPharmacy> SalesSearch(SalesSearch2 search)
+        {
+            return _pharmacyService.SalesSearch(search);
+        }
+
+
+
+
 
 
     }

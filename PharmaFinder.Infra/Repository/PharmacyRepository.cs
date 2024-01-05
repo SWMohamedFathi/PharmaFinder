@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using MailKit.Search;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
 using PharmaFinder.Core.DTO;
@@ -84,5 +85,63 @@ namespace PharmaFinder.Infra.Repository
 
         }
 
+
+
+        //////////////
+        ///
+
+
+        public List<GetAllMedicineInPharmacy> GetAllMedcineInPharmmacy(decimal id)
+        {
+            var p = new DynamicParameters();
+            p.Add("idphar", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            IEnumerable<GetAllMedicineInPharmacy> result = dbContext.Connection.Query<GetAllMedicineInPharmacy>("User_Pharamcy.GetAllMedcineInPharmmacy", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public List<Order> GetAllOrdersInPharmmacy(decimal id)
+        {
+            var p = new DynamicParameters();
+            p.Add("idphar", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            IEnumerable<Order> result = dbContext.Connection.Query<Order>("User_Pharamcy.GetAllOrdersInPharmacy", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+        public int GetMedicineCountInPharmacy(decimal id)
+        {
+            var p = new DynamicParameters();
+            p.Add("idphar", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.ExecuteScalar<int>("User_Pharamcy.GetMedicineCount", commandType: CommandType.StoredProcedure);
+            return result;
+        }
+
+       public int SalesPharmacy(decimal id)
+        {
+            var p = new DynamicParameters();
+            p.Add("idphar", id, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.ExecuteScalar<int>("User_Pharamcy.SalesPharmacy", commandType: CommandType.StoredProcedure);
+            return result;
+        }
+        
+
+    public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(decimal pharmacyId,decimal orderId)
+        {
+            var p = new DynamicParameters();
+            p.Add("idphar", pharmacyId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("idphar", orderId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+
+            IEnumerable<GetAllOrderMedsByOrderIdInPharmacy> result = dbContext.Connection.Query<GetAllOrderMedsByOrderIdInPharmacy>("User_Pharamcy.GetAllOrderMedsByOrderIdInPharmacy", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
+
+        public List<SalesSearchInPharmacy> SalesSearch(SalesSearch2 search)
+        {
+            var p = new DynamicParameters();
+            p.Add("DateTo", search.DateTo, DbType.Date, direction: ParameterDirection.Input);
+            p.Add("DateFrom", search.DateFrom, DbType.Date, direction: ParameterDirection.Input);
+            IEnumerable<SalesSearchInPharmacy> result = dbContext.Connection.Query<SalesSearchInPharmacy>("orders_package.SalesSearch", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
     }
 }

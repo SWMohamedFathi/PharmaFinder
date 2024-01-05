@@ -246,6 +246,10 @@ namespace PharmaFinder.Core.Data
                     .HasColumnType("NUMBER(38)")
                     .HasColumnName("USERID");
 
+                entity.Property(e => e.Pharmacyid)
+                    .HasColumnType("NUMBER(38)")
+                    .HasColumnName("PHARMID");
+
                 entity.HasOne(d => d.Pharmacy)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Pharmacyid)
