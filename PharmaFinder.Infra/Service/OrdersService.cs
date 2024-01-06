@@ -235,6 +235,10 @@ namespace PharmaFinder.Infra.Service
             return htmlBuilder.ToString();
         }
 
+        public List<SalesSearch2> SalesSearch2(SalesSearch2 search)
+        {
+            return _orderRepository.SalesSearch2(search);
+        }
 
     }
 }

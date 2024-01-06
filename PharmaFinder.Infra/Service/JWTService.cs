@@ -12,7 +12,6 @@ using System.Threading.Tasks;
 
 namespace PharmaFinder.Infra.Service
 {
- 
 
         public class JWTService : IJWTService
         {
@@ -37,7 +36,7 @@ namespace PharmaFinder.Infra.Service
                     var claims = new List<Claim>
 
                 {
-                new Claim(ClaimTypes.Name, result.Username),
+                new Claim(ClaimTypes.Name, result.Email),
                 new Claim("roleid", result.Roleid.ToString())
                 };
 

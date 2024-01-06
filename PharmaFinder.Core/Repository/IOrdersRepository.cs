@@ -11,6 +11,7 @@ namespace PharmaFinder.Core.Repository
     public interface IOrdersRepository
     {
         public int CalculateTotalOrderPrice();
+        public List<SalesSearch2> SalesSearch2(SalesSearch2 search);
 
         List<GetALLInformationOrders> GetAllInformationOrders();
         List<Order> GetAllOrders();
