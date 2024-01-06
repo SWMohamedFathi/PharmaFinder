@@ -42,9 +42,18 @@ namespace PharmaFinder.Api.Controllers
 
         [HttpPost]
         [Route("CreateOrdermed")]
-        public IActionResult CreateOrdermed(Ordermed ordermed)
+        public IActionResult CreateOrdermed(List<PharmaMedResult> orderList,int orderid)
         {
-            _orderMedService.CreateOrdermed(ordermed);
+            Ordermed order = new Ordermed();
+            foreach (var item in orderList)
+            {
+                order.Orderid = orderid;
+                order.Medicineid = item.Medicineid;
+                order.Quantity = item.Quantity;
+                _orderMedService.CreateOrdermed(order);
+
+            }
+
             return StatusCode(201);
         }
 
