@@ -59,13 +59,13 @@ namespace PharmaFinder.Api.Controllers
                     _orderMedService.CreateOrdermed(order);
                 }
 
-                return StatusCode(201); // Assuming the creation was successful
+                return StatusCode(201); 
             }
             catch (Exception ex)
             {
-                // Log the exception or handle it as needed
+               
                 Console.WriteLine($"An error occurred: {ex.Message}");
-                return StatusCode(500); // Internal Server Error
+                return StatusCode(500); 
             }
         }
         [HttpPut]
