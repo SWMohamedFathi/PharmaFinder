@@ -43,9 +43,9 @@ namespace PharmaFinder.Infra.Service
             return _orderRepository.GetOrderById(id);
         }
 
-        public void CreateOrder(Order orderData)
+        public int CreateOrder(Order orderData)
         {
-            _orderRepository.CreateOrder(orderData);
+            return _orderRepository.CreateOrder(orderData);
         }
 
         public void UpdateOrder(Order orderData)

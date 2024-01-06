@@ -15,7 +15,7 @@ namespace PharmaFinder.Core.Service
         List<GetALLInformationOrders> GetAllInformationOrders();
         List<Order> GetAllOrders();
         Order GetOrderById(decimal id);
-        void CreateOrder(Order orderData);
+        int CreateOrder(Order orderData);
         void UpdateOrder(Order orderData);
         void DeleteOrder(decimal id);
         public void AcceptOrRejectOrders(Order order);
