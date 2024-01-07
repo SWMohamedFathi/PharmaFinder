@@ -46,6 +46,8 @@ builder.Services.AddScoped<IOrderMedService, OrderMedService>();
 builder.Services.AddScoped<IReadPrescriptionService, ReadPrescriptionService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IPhMedServices, PhMedService>();
+builder.Services.AddScoped<IPhMedRepsitory, PhMedRepository>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
