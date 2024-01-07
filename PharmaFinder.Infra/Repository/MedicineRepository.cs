@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PharmaFinder.Infra.Repository
 {
-    public class MedicineRepository:IMedicineRepository
+    public class MedicineRepository : IMedicineRepository
     {
         private readonly IDbContext dbContext;
 
@@ -51,8 +51,8 @@ namespace PharmaFinder.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("Medicine_ID", medicineData.Medicineid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Medicine_Name", medicineData.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input); 
-            p.Add("IMAGE_MEDICINE_", medicineData.Imagename, dbType: DbType.String , direction: ParameterDirection.Input);
+            p.Add("Medicine_Name", medicineData.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("IMAGE_MEDICINE_", medicineData.Imagename, dbType: DbType.String, direction: ParameterDirection.Input);
 
             p.Add("Medicine_Price", medicineData.Medicineprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Medicine_Type", medicineData.Medicinetype, dbType: DbType.String, direction: ParameterDirection.Input);
@@ -78,4 +78,3 @@ namespace PharmaFinder.Infra.Repository
 
     }
 }
-

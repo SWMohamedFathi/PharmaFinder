@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PharmaFinder.Core.DTO
 {
-    public class SalesSearch2
+    public class SalesSearchInPharmacy
     {
         public string? Username { get; set; }
         public string? Pharmacyname { get; set; }
@@ -15,10 +15,5 @@ namespace PharmaFinder.Core.DTO
         public decimal? Orderprice { get; set; }
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
-        public decimal? idphar { get; set; }
-
-        
-
-
     }
 }

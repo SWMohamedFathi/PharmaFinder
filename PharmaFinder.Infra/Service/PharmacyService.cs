@@ -52,6 +52,33 @@ namespace PharmaFinder.Infra.Service
         {
             return _pharmacyRepository.SearchPharmacyName(search);
         }
-       
+
+        public List<GetAllMedicineInPharmacy> GetAllMedcineInPharmmacy(decimal id)
+        {
+            return _pharmacyRepository.GetAllMedcineInPharmmacy(id);
+        }
+        public List<Order> GetAllOrdersInPharmmacy(decimal id)
+        {
+            return _pharmacyRepository.GetAllOrdersInPharmmacy(id);
+
+        }
+        public int GetMedicineCountInPharmacy(decimal id)
+        {
+            return _pharmacyRepository.GetMedicineCountInPharmacy(id);
+        }
+        public int SalesPharmacy(decimal id)
+        {
+            return _pharmacyRepository.SalesPharmacy(id);
+        }
+        public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(GetAllOrderMedsByOrderIdInPharmacy obj)
+        {
+            return _pharmacyRepository.GetAllOrderMedsByOrderIdInPharmacy(obj);
+        }
+        public List<SalesSearchInPharmacy> SalesSearch(SalesSearch2 search)
+        {
+            return _pharmacyRepository.SalesSearch(search);
+        }
+
+
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PharmaFinder.Infra.Service
 {
-    public class MedicineService:IMedicineService
+    public class MedicineService : IMedicineService
     {
         private readonly IMedicineRepository _medicineRepository;
 
