@@ -70,9 +70,9 @@ namespace PharmaFinder.Infra.Service
         {
             return _pharmacyRepository.SalesPharmacy(id);
         }
-        public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(decimal pharmacyId, decimal orderId)
+        public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(GetAllOrderMedsByOrderIdInPharmacy obj)
         {
-            return _pharmacyRepository.GetAllOrderMedsByOrderIdInPharmacy(pharmacyId, orderId);
+            return _pharmacyRepository.GetAllOrderMedsByOrderIdInPharmacy(obj);
         }
         public List<SalesSearchInPharmacy> SalesSearch(SalesSearch2 search)
         {

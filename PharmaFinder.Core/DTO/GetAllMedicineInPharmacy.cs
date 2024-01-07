@@ -11,8 +11,6 @@ namespace PharmaFinder.Core.DTO
 
         public string? Medicinename { get; set; }
         
-        public decimal? idphar { get; set; }
-
         public decimal? Medicineprice { get; set; }
         public string? Medicinetype { get; set; }
         public string? Medicinedescription { get; set; }

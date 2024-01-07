@@ -99,11 +99,11 @@ namespace PharmaFinder.Api.Controllers
             return _pharmacyService.SalesPharmacy(id);
         }
         [HttpPost]
-        [Route("GetAllOrderMedsByOrderIdInPharmacy/{pharmacyId}/{orderId}")]
-        public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(decimal pharmacyId, decimal orderId)
+        [Route("GetAllOrderMedsByOrderIdInPharmacy")]
+        public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(GetAllOrderMedsByOrderIdInPharmacy obj)
         {
-            // Use 'pharmacyId' and 'orderId' in your logic
-            return _pharmacyService.GetAllOrderMedsByOrderIdInPharmacy(pharmacyId, orderId);
+            return _pharmacyService.GetAllOrderMedsByOrderIdInPharmacy(obj);
+
         }
 
         [HttpPost]

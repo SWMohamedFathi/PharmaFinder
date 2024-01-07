@@ -40,7 +40,7 @@ namespace PharmaFinder.Api.Controllers
 
         [HttpPut]
         [Route("UpdateMedicine")]
-        public IActionResult UpdateMedicine( Medicine medicine)
+        public IActionResult UpdateMedicine(Medicine medicine)
         {
             _medicineService.UpdateMedicine(medicine);
             return Ok();
@@ -61,7 +61,7 @@ namespace PharmaFinder.Api.Controllers
         public Medicine UploadIMage()
         {
             var file = Request.Form.Files[0];
-            var fileName = Guid.NewGuid().ToString() +"_" + file.FileName;
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
             var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular\\src\\assets\\Images", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {

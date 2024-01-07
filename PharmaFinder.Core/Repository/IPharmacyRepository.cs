@@ -15,7 +15,7 @@ namespace PharmaFinder.Core.Repository
         public List<Order> GetAllOrdersInPharmmacy(decimal id);
         public int GetMedicineCountInPharmacy(decimal id);
         public int SalesPharmacy(decimal id);
-        public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(decimal pharmacyId, decimal orderId);
+        public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(GetAllOrderMedsByOrderIdInPharmacy obj);
         public List<SalesSearchInPharmacy> SalesSearch(SalesSearch2 search);
         List<Pharmacy> GetAllPharmacies();
         Pharmacy GetPharmacyById(decimal id);

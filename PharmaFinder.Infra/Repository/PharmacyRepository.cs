@@ -119,7 +119,7 @@ namespace PharmaFinder.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("idphar", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            var result = dbContext.Connection.ExecuteScalar<int>("User_Pharamcyll.GetMedcineCount", p, commandType: CommandType.StoredProcedure);
+            var result = dbContext.Connection.ExecuteScalar<int>("User_Pharamcy.GetMedcineCount", p, commandType: CommandType.StoredProcedure);
 
             return result;
         }
@@ -133,11 +133,11 @@ namespace PharmaFinder.Infra.Repository
         }
         
 
-    public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(decimal pharmacyId,decimal orderId)
+    public List<GetAllOrderMedsByOrderIdInPharmacy> GetAllOrderMedsByOrderIdInPharmacy(GetAllOrderMedsByOrderIdInPharmacy obj)
         {
             var p = new DynamicParameters();
-            p.Add("idphar", pharmacyId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("idphar", orderId, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("ID", obj.ID, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("idphar", obj.idphar, dbType: DbType.Decimal, direction: ParameterDirection.Input);
 
             IEnumerable<GetAllOrderMedsByOrderIdInPharmacy> result = dbContext.Connection.Query<GetAllOrderMedsByOrderIdInPharmacy>("User_Pharamcy.GetAllOrderMedsByOrderIdInPharm", p, commandType: CommandType.StoredProcedure);
             return result.ToList();
