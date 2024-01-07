@@ -10,12 +10,11 @@ namespace PharmaFinder.Core.DTO
     {
 
         public string? Medicinename { get; set; }
-        
+        public decimal Medicineid { get; set; }
         public decimal? Medicineprice { get; set; }
         public string? Medicinetype { get; set; }
         public string? Medicinedescription { get; set; }
         public string? Imagename { get; set; }
-
         public DateTime? Expiredate { get; set; }
         public string? Activesubstance { get; set; }
         public decimal? Quantity { get; set; }
