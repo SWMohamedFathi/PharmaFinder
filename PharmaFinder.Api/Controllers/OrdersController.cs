@@ -53,8 +53,8 @@ namespace PharmaFinder.Api.Controllers
         [Route("CreateOrder")]
         public IActionResult CreateOrder(Order order)
         {
-            _orderService.CreateOrder(order);
-            return StatusCode(201);
+            int orderid= _orderService.CreateOrder(order);
+            return StatusCode(201, orderid);
         }
         [HttpPost]
         [Route("ProcessPayment")]

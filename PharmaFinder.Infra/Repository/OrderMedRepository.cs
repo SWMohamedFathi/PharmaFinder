@@ -51,8 +51,9 @@ namespace PharmaFinder.Infra.Repository
         public void CreateOrdermed(Ordermed ordermedData)
         {
             var p = new DynamicParameters();
-            p.Add("MedID", ordermedData.Medicineid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("OrdID", ordermedData.Orderid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("MedicineID", ordermedData.Medicineid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("PharmacyID", ordermedData.Pharmacyid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("OrderID", ordermedData.Orderid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Quantity", ordermedData.Quantity, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Execute("OrderMed_Package.CreateOrdermed", p, commandType: CommandType.StoredProcedure);
         }

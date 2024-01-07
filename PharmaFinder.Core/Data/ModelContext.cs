@@ -33,7 +33,7 @@ namespace PharmaFinder.Core.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+    #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseOracle("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SID=xe)));User Id=C##PHARM;Password=1234;");
             }
         }
@@ -275,6 +275,9 @@ namespace PharmaFinder.Core.Data
                 entity.Property(e => e.Medicineid)
                     .HasColumnType("NUMBER(38)")
                     .HasColumnName("MEDICINEID");
+                entity.Property(e => e.Pharmacyid)
+                  .HasColumnType("NUMBER(38)")
+                  .HasColumnName("PHARMACYID");
 
                 entity.Property(e => e.Orderid)
                     .HasColumnType("NUMBER(38)")

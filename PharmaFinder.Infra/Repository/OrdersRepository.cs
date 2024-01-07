@@ -57,12 +57,18 @@ namespace PharmaFinder.Infra.Repository
             return result.FirstOrDefault();
         }
 
-        public void CreateOrder(Order orderData)
+        public int CreateOrder(Order orderData)
         {
             var p = new DynamicParameters();
             p.Add("UserID", orderData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("PharmacyID", orderData.Pharmacyid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-               var result = dbContext.Connection.Execute("orders_package.CreateOrder", p, commandType: CommandType.StoredProcedure);
+            p.Add("OrderPrice", orderData.Orderprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("NewOrderID", dbType: DbType.Int32, direction: ParameterDirection.Output); 
+
+            var result = dbContext.Connection.Execute("orders_package.CreateOrder", p, commandType: CommandType.StoredProcedure);
+
+            int newOrderID = p.Get<int>("NewOrderID");
+
+            return newOrderID;
         }
 
         public void UpdateOrder(Order orderData)
