@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PharmaFinder.Core.Data;
 using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Service;
 
@@ -15,10 +16,21 @@ namespace PharmaFinder.Api.Controllers
             _emailService = emailService;
         }
 
-        [HttpPost(Name = "SendEmail")]
+        [HttpPost]
+        [Route("SendEmail")]
+
         public void SendEmail(SendEmailDto emailDto)
         {
             _emailService.SendEmail(emailDto);
         }
+
+        [HttpPost]
+        [Route("SendInvoice")]
+
+        public void SendInvoice([FromBody] SendInvoicePayload payload)
+        {
+            _emailService.SendInvoice(payload.EmailDto, payload.Items, payload.InvoiceDTO);
+        }
+
     }
 }
