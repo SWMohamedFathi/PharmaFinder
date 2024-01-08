@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,11 @@ namespace PharmaFinder.Infra.Repository
         {
             this.dbContext = _dbContext;
         }
-
+        public List<GetAllMedicineInPharmacy> GetAllMedicinesDetals()
+        {
+            IEnumerable<GetAllMedicineInPharmacy> result = dbContext.Connection.Query<GetAllMedicineInPharmacy>("Medicine_Package.GetAllMedicinesDetales", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
         public List<Medicine> GetAllMedicines()
         {
             IEnumerable<Medicine> result = dbContext.Connection.Query<Medicine>("Medicine_Package.GetAllMedicines", commandType: CommandType.StoredProcedure);

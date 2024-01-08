@@ -8,8 +8,11 @@ namespace PharmaFinder.Core.DTO
 {
     public class GetAllMedicineInPharmacy
     {
+        public string? Pharmacyname { get; set; }
 
+        public decimal Phmedid { get; set; }
         public string? Medicinename { get; set; }
+        public decimal Pharmacyid { get; set; }
         public decimal Medicineid { get; set; }
         public decimal? Medicineprice { get; set; }
         public string? Medicinetype { get; set; }

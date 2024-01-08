@@ -154,6 +154,39 @@ namespace PharmaFinder.Infra.Repository
             return result.ToList();
         }
 
+        ////////////
+        ///
 
+        public void CreateMedcineInPharmacy(CreateMedcineInpharmacy createMedcineInpharmacy)
+        {
+            var p = new DynamicParameters();
+            p.Add("Medicine_Name", createMedcineInpharmacy.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("PHARMACY_ID", createMedcineInpharmacy.Pharmacyid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Medicine_Price", createMedcineInpharmacy.Medicineprice, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("QUANTITY_", createMedcineInpharmacy.Quantity, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("IMAGE_MEDICINE_", createMedcineInpharmacy.Imagename, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_Type", createMedcineInpharmacy.Medicinetype, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_Description", createMedcineInpharmacy.Medicinedescription, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Expire_Date", createMedcineInpharmacy.Expiredate, dbType: DbType.Date, direction: ParameterDirection.Input);
+            p.Add("Active_Substance", createMedcineInpharmacy.Activesubstance, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("User_Pharamcy.CreateMedicine", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public void updateMedcineInPharmacy(CreateMedcineInpharmacy updateMedcineInpharmacy)
+        {
+            var p = new DynamicParameters(); 
+            p.Add("PHMED_ID", updateMedcineInpharmacy.Phmedid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Medicine_id", updateMedcineInpharmacy.Medicineid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Medicine_Name", updateMedcineInpharmacy.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("PHARMACY_ID", updateMedcineInpharmacy.Pharmacyid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("Medicine_Price", updateMedcineInpharmacy.Medicineprice, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("QUANTITY_", updateMedcineInpharmacy.Quantity, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("IMAGE_MEDICINE_", updateMedcineInpharmacy.Imagename, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_Type", updateMedcineInpharmacy.Medicinetype, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Medicine_Description", updateMedcineInpharmacy.Medicinedescription, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("Expire_Date", updateMedcineInpharmacy.Expiredate, dbType: DbType.Date, direction: ParameterDirection.Input);
+            p.Add("Active_Substance", updateMedcineInpharmacy.Activesubstance, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("User_Pharamcy.updateMedcine", p, commandType: CommandType.StoredProcedure);
+        }
     }
 }
