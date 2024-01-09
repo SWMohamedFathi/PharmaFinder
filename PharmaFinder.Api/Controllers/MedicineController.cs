@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Service;
 
 namespace PharmaFinder.Api.Controllers
@@ -21,6 +22,12 @@ namespace PharmaFinder.Api.Controllers
         public List<Medicine> GetAllMedicines()
         {
             return _medicineService.GetAllMedicines();
+        }
+        [HttpGet]
+        [Route("GetAllMedicinesDetals")]
+        public List<GetAllMedicineInPharmacy> GetAllMedicinesDetals()
+        {
+            return _medicineService.GetAllMedicinesDetals();
         }
 
         [HttpGet]
@@ -62,7 +69,7 @@ namespace PharmaFinder.Api.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular\\src\\assets\\Images", fileName);
+            var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular-1\\src\\assets\\Images", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);

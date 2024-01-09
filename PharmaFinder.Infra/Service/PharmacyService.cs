@@ -78,6 +78,15 @@ namespace PharmaFinder.Infra.Service
         {
             return _pharmacyRepository.SalesSearch(search);
         }
+        public void CreateMedcineInPharmacy(CreateMedcineInpharmacy createMedcineInpharmacy)
+        {
+             _pharmacyRepository.CreateMedcineInPharmacy(createMedcineInpharmacy);
+        }
+
+        public void updateMedcineInPharmacy(CreateMedcineInpharmacy updateMedcineInpharmacy)
+        {
+            _pharmacyRepository.updateMedcineInPharmacy(updateMedcineInpharmacy);
+        }
 
 
     }

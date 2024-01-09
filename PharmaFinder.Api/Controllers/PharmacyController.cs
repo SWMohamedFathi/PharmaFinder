@@ -113,8 +113,21 @@ namespace PharmaFinder.Api.Controllers
             return _pharmacyService.SalesSearch(search);
         }
 
+        [HttpPost]
+        [Route("createMedcineInPharmacy")]
+        public void CreateMedcineInPharmacy(CreateMedcineInpharmacy createMedcineInpharmacy)
+        {
+            _pharmacyService.CreateMedcineInPharmacy(createMedcineInpharmacy);
+        }
 
-   
+        [HttpPut]
+        [Route("updateMedcineInPharmacy")]
+        public void updateMedcineInPharmacy(CreateMedcineInpharmacy updateMedcineInpharmacy)
+        {
+            _pharmacyService.updateMedcineInPharmacy(updateMedcineInpharmacy);
+        }
+
+
 
 
 
