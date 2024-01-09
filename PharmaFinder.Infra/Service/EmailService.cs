@@ -82,13 +82,13 @@ namespace PharmaFinder.Infra.Service
         {
             StringBuilder htmlContent = new StringBuilder();
 			htmlContent.Append($@"<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset=""utf-8"" />
-		<title>A simple, clean, and responsive HTML invoice template</title>
-
-		<style>
-			.invoice-box {{
+           <html>
+	          <head>
+		   <meta charset=""utf-8"" />
+	       	<title>A simple, clean, and responsive HTML invoice template</title>
+ 
+	       	<style>
+		     	.invoice-box {{
 				max-width: 800px;
 				margin: auto;
 				padding: 30px;
@@ -97,14 +97,14 @@ namespace PharmaFinder.Infra.Service
 				font-size: 16px;
 				line-height: 24px;
 				font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-				color: #555;
-			}}
+		  		color: #555;
+		       	}}
 
-			.invoice-box table {{
+			   .invoice-box table {{
 				width: 100%;
 				line-height: inherit;
 				text-align: left;
-			}}
+			     }}
 
 			.invoice-box table td {{
 				padding: 5px;
@@ -191,7 +191,7 @@ namespace PharmaFinder.Infra.Service
 							<tr>
 								<td class=""title"">
 									<img
-										src=""https://sparksuite.github.io/simple-html-invoice-template/images/logo.png""
+										src=""https://i.ibb.co/hgkftBt/Pharma-Finder.png""
 										style=""width: 100%; max-width: 300px""
 									/>
 								</td>

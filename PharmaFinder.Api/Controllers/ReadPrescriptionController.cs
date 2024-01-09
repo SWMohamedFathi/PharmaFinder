@@ -18,7 +18,9 @@ namespace PharmaFinder.Api.Controllers
             _prescriptionReadService = readPrescriptionService;
         }
 
-        [HttpPost("ReadPrescription")]
+        [HttpPost]
+        [Route("ReadPrescription")]
+
         public IActionResult ReadPrescription()
         {
             var file = Request.Form.Files[0];
@@ -43,6 +45,33 @@ namespace PharmaFinder.Api.Controllers
                     return Ok(medicinesDetails);
                 }
             }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
+        [Route("ReadTxtPrescription/{medTxt}")]
+        public IActionResult ReadTxtPrescription (string medTxt)
+        {
+
+            try
+            {
+                if (medTxt == null)
+                    return BadRequest("empty content.");
+
+
+                List<String> extractedTxt = _prescriptionReadService.ExtractMedsFromTxt(medTxt);
+                    List<Medicine> medicines = _prescriptionReadService.FindMatchingMedicines(extractedTxt);
+                    List<PharmaMedResult> medicinesDetails = new List<PharmaMedResult>();
+                    foreach (var item in medicines)
+                    {
+                        medicinesDetails.AddRange(_prescriptionReadService.GetMedicineDetails(item.Medicineid));
+                    }
+                    return Ok(medicinesDetails);
+                }
+            
             catch (Exception ex)
             {
                 return StatusCode(500, $"An error occurred: {ex.Message}");
