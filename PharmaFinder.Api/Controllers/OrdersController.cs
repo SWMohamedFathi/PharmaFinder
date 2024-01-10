@@ -33,7 +33,13 @@ namespace PharmaFinder.Api.Controllers
             return _orderService.CalculateTotalOrderPrice();
         }
 
+        [HttpGet]
+        [Route("CalculateProfitForPaidOrders")]
+        public List<ProfitDTO> CalculateProfitForPaidOrders()
+        {
+            return _orderService.CalculateProfitForPaidOrders();
 
+        }
 
         [HttpGet]
         [Route("GetAllOrders")]

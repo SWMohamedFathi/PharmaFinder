@@ -28,6 +28,12 @@ namespace PharmaFinder.Infra.Service
         {
             return _orderRepository.CalculateTotalOrderPrice();
         }
+
+        public List<ProfitDTO> CalculateProfitForPaidOrders()
+        {
+            return _orderRepository.CalculateProfitForPaidOrders();
+
+        }
         public List<GetALLInformationOrders> GetAllInformationOrders()
         {
             return _orderRepository.GetAllInformationOrders();
