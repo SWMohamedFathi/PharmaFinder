@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Service;
 using PharmaFinder.Infra.Service;
 
@@ -29,13 +30,19 @@ namespace PharmaFinder.Api.Controllers
             return _userService.GetAllUsers();
         }
 
-            [HttpGet]
-            [Route("GetUserCount")]
+        [HttpGet]
+        [Route("GetUserCount")]
         public int GetUserCount()
         {
             return _userService.GetUserCount();
-            }
+        }
 
+        [HttpGet]
+        [Route("GetAllUsersEmail")]
+        public ActionResult<List<AllUsersEmails>> GetAllUsersEmail()
+        {
+            return _userService.GetAllUsersEmail();
+        }
 
         [HttpGet]
         [Route("GetUserById/{id}")]

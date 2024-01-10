@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,11 @@ namespace PharmaFinder.Infra.Repository
             return result.ToList();
         }
 
+        public List<AllUsersEmails> GetAllUsersEmail()
+        {
+            IEnumerable<AllUsersEmails> result = dbContext.Connection.Query<AllUsersEmails>("users_package.GetAllUsersEmail", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
         public int GetUserCount()
         {
             var result = dbContext.Connection.ExecuteScalar<int>("users_package.GetUserCount", commandType: CommandType.StoredProcedure);

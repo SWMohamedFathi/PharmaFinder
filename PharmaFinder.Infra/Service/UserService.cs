@@ -1,4 +1,5 @@
 ﻿using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using PharmaFinder.Core.Service;
 using System;
@@ -29,6 +30,11 @@ namespace PharmaFinder.Infra.Service
         public List<User> GetAllUsers()
         {
             return _userRepository.GetAllUsers();
+        }
+
+        public List<AllUsersEmails> GetAllUsersEmail()
+        {
+            return _userRepository.GetAllUsersEmail();
         }
 
         public User GetUserById(decimal id)
