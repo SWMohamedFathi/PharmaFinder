@@ -27,5 +27,7 @@ namespace PharmaFinder.Core.Service
         public void ProcessPayment(int OrderdID, Bank bank);
         Task<byte[]> GenerateMonthlyPdfReport(int month, int year);
         Task<byte[]> GenerateAnnualPdfReport(int year);
+        public List<Order> GetOrdersByUserId(decimal id);
+        public List<ProfitDTO> CalculateProfitForPaidOrders();
     }
 }

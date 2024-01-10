@@ -26,6 +26,8 @@ namespace PharmaFinder.Core.Repository
         Task<IEnumerable<AllSalesByMonthReport>> GetAllSalesByMonthReport(int month, int year);
         Task<IEnumerable<AllSalesByYearReport>> GetAllSalesByYearReport(int year);
         public void ProcessPayment(int OrderdID, Bank bank);
+        public List<Order> GetOrdersByUserId(decimal id);
+        public List<ProfitDTO> CalculateProfitForPaidOrders();
 
     }
 }

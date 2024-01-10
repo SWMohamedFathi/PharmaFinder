@@ -38,11 +38,20 @@ namespace PharmaFinder.Infra.Service
             return _orderRepository.GetAllOrders();
         }
 
+        public List<ProfitDTO> CalculateProfitForPaidOrders()
+        {
+            return _orderRepository.CalculateProfitForPaidOrders();
+
+
+        }
         public Order GetOrderById(decimal id)
         {
             return _orderRepository.GetOrderById(id);
         }
-
+        public List<Order> GetOrdersByUserId(decimal id)
+        {
+            return _orderRepository.GetOrdersByUserId(id);
+        }
         public int CreateOrder(Order orderData)
         {
             return _orderRepository.CreateOrder(orderData);
