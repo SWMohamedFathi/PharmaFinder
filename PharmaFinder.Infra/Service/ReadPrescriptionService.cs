@@ -42,6 +42,22 @@ namespace PharmaFinder.Infra.Service
 
             return wordsList;
         }
+        public List<string> ExtractMedsFromTxt(string med)
+        {
+            var wordsList = new List<string>();
+
+            
+               
+                    string content = med;
+                    content = content.Replace(",", " ");
+                    string[] words = content.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    wordsList.AddRange(words);
+                
+            
+
+            return wordsList;
+        }
 
         public List<Medicine> FindMatchingMedicines(List<string> words)
         {
@@ -58,6 +74,7 @@ namespace PharmaFinder.Infra.Service
 
             return matchingMedicines;
         }
+
         public List<PharmaMedResult> GetMedicineDetails(decimal id)
         {
             return readPrescriptionRepository.GetMedicineDetails(id);

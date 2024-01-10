@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Service;
 
 namespace PharmaFinder.Api.Controllers
@@ -22,6 +23,12 @@ namespace PharmaFinder.Api.Controllers
         {
             return _medicineService.GetAllMedicines();
         }
+        [HttpGet]
+        [Route("GetAllMedicinesDetals")]
+        public List<GetAllMedicineInPharmacy> GetAllMedicinesDetals()
+        {
+            return _medicineService.GetAllMedicinesDetals();
+        }
 
         [HttpGet]
         [Route("GetMedicineById/{id}")]
@@ -40,7 +47,7 @@ namespace PharmaFinder.Api.Controllers
 
         [HttpPut]
         [Route("UpdateMedicine")]
-        public IActionResult UpdateMedicine( Medicine medicine)
+        public IActionResult UpdateMedicine(Medicine medicine)
         {
             _medicineService.UpdateMedicine(medicine);
             return Ok();
@@ -53,13 +60,16 @@ namespace PharmaFinder.Api.Controllers
             _medicineService.DeleteMedicine(id);
             return Ok();
         }
+
+
+
         [Route("uploadImage")]
         [HttpPost]
         public Medicine UploadIMage()
         {
             var file = Request.Form.Files[0];
-            var fileName = Guid.NewGuid().ToString() +"_" + file.FileName;
-            var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular\\src\\assets\\Images", fileName);
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular-1\\src\\assets\\Images", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);

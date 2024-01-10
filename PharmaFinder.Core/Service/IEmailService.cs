@@ -11,5 +11,7 @@ namespace PharmaFinder.Core.Service
     {
         public void SendEmail(SendEmailDto emailDto);
 
+        public void SendInvoice(SendEmailDto emailDto, List<PharmaMedResult> items, InvoiceDTO invoiceDTO);
+
     }
 }

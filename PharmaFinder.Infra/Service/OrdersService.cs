@@ -44,14 +44,23 @@ namespace PharmaFinder.Infra.Service
             return _orderRepository.GetAllOrders();
         }
 
+        public List<ProfitDTO> CalculateProfitForPaidOrders()
+        {
+            return _orderRepository.CalculateProfitForPaidOrders();
+
+
+        }
         public Order GetOrderById(decimal id)
         {
             return _orderRepository.GetOrderById(id);
         }
-
-        public void CreateOrder(Order orderData)
+        public List<Order> GetOrdersByUserId(decimal id)
         {
-            _orderRepository.CreateOrder(orderData);
+            return _orderRepository.GetOrdersByUserId(id);
+        }
+        public int CreateOrder(Order orderData)
+        {
+            return _orderRepository.CreateOrder(orderData);
         }
 
         public void UpdateOrder(Order orderData)
@@ -241,6 +250,10 @@ namespace PharmaFinder.Infra.Service
             return htmlBuilder.ToString();
         }
 
+        public List<SalesSearch2> SalesSearch2(SalesSearch2 search)
+        {
+            return _orderRepository.SalesSearch2(search);
+        }
 
     }
 }

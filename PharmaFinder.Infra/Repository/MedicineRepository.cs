@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using PharmaFinder.Core.Common;
 using PharmaFinder.Core.Data;
+using PharmaFinder.Core.DTO;
 using PharmaFinder.Core.Repository;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace PharmaFinder.Infra.Repository
 {
-    public class MedicineRepository:IMedicineRepository
+    public class MedicineRepository : IMedicineRepository
     {
         private readonly IDbContext dbContext;
 
@@ -19,7 +20,11 @@ namespace PharmaFinder.Infra.Repository
         {
             this.dbContext = _dbContext;
         }
-
+        public List<GetAllMedicineInPharmacy> GetAllMedicinesDetals()
+        {
+            IEnumerable<GetAllMedicineInPharmacy> result = dbContext.Connection.Query<GetAllMedicineInPharmacy>("Medicine_Package.GetAllMedicinesDetales", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
         public List<Medicine> GetAllMedicines()
         {
             IEnumerable<Medicine> result = dbContext.Connection.Query<Medicine>("Medicine_Package.GetAllMedicines", commandType: CommandType.StoredProcedure);
@@ -51,8 +56,8 @@ namespace PharmaFinder.Infra.Repository
         {
             var p = new DynamicParameters();
             p.Add("Medicine_ID", medicineData.Medicineid, dbType: DbType.Decimal, direction: ParameterDirection.Input);
-            p.Add("Medicine_Name", medicineData.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input); 
-            p.Add("IMAGE_MEDICINE_", medicineData.Imagename, dbType: DbType.String , direction: ParameterDirection.Input);
+            p.Add("Medicine_Name", medicineData.Medicinename, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("IMAGE_MEDICINE_", medicineData.Imagename, dbType: DbType.String, direction: ParameterDirection.Input);
 
             p.Add("Medicine_Price", medicineData.Medicineprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
             p.Add("Medicine_Type", medicineData.Medicinetype, dbType: DbType.String, direction: ParameterDirection.Input);
@@ -78,4 +83,3 @@ namespace PharmaFinder.Infra.Repository
 
     }
 }
-

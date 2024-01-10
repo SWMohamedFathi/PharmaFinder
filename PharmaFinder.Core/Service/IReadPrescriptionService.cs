@@ -14,6 +14,7 @@ namespace PharmaFinder.Core.Service
 
         public List<string> ExtractWordsFromPDF(Stream file);
         public List<Medicine> FindMatchingMedicines(List<string> words);
+        public List<string> ExtractMedsFromTxt(string med);
         public List<PharmaMedResult> GetMedicineDetails(decimal id);
 
 

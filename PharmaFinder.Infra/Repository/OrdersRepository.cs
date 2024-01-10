@@ -46,7 +46,11 @@ namespace PharmaFinder.Infra.Repository
             IEnumerable<Order> result = dbContext.Connection.Query<Order>("orders_package.GetAllOrders", commandType: CommandType.StoredProcedure);
             return result.ToList();
         }
-
+        public List<ProfitDTO> CalculateProfitForPaidOrders()
+        {
+            var result = dbContext.Connection.Query<ProfitDTO>("orders_package.CalculateProfitForPaidOrders", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
         public List<GetALLInformationOrders> GetAllInformationOrders()
         {
             IEnumerable<GetALLInformationOrders> result = dbContext.Connection.Query<GetALLInformationOrders>("orders_package.GetAllOrdersAndOrderMed", commandType: CommandType.StoredProcedure);
@@ -56,17 +60,29 @@ namespace PharmaFinder.Infra.Repository
         public Order GetOrderById(decimal id)
         {
             var p = new DynamicParameters();
-            p.Add("OrderID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("p_OrderID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
             var result = dbContext.Connection.Query<Order>("orders_package.GetOrderById", p, commandType: CommandType.StoredProcedure);
             return result.FirstOrDefault();
         }
-
-        public void CreateOrder(Order orderData)
+        public List<Order> GetOrdersByUserId(decimal id)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_UserID", id, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Query<Order>("orders_package.GetOrderByUserId", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+        public int CreateOrder(Order orderData)
         {
             var p = new DynamicParameters();
             p.Add("UserID", orderData.Userid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-            p.Add("PharmacyID", orderData.Pharmacyid, dbType: DbType.Int32, direction: ParameterDirection.Input);
-               var result = dbContext.Connection.Execute("orders_package.CreateOrder", p, commandType: CommandType.StoredProcedure);
+            p.Add("OrderPrice", orderData.Orderprice, dbType: DbType.Decimal, direction: ParameterDirection.Input);
+            p.Add("NewOrderID", dbType: DbType.Int32, direction: ParameterDirection.Output); 
+
+            var result = dbContext.Connection.Execute("orders_package.CreateOrder", p, commandType: CommandType.StoredProcedure);
+
+            int newOrderID = p.Get<int>("NewOrderID");
+
+            return newOrderID;
         }
 
         public void UpdateOrder(Order orderData)
@@ -163,7 +179,14 @@ namespace PharmaFinder.Infra.Repository
 
 
         }
-
+        public List<SalesSearch2> SalesSearch2(SalesSearch2 search)
+        {
+            var p =new DynamicParameters();
+            p.Add("DateTo", search.DateTo, DbType.Date, direction: ParameterDirection.Input);
+            p.Add("DateFrom", search.DateFrom, DbType.Date, direction: ParameterDirection.Input);
+            IEnumerable<SalesSearch2> result = dbContext.Connection.Query<SalesSearch2>("orders_package.SalesSearch2", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
 
     }
 

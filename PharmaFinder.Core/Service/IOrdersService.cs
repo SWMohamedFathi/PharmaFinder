@@ -11,10 +11,11 @@ namespace PharmaFinder.Core.Service
     public interface IOrdersService
     {
         public int CalculateTotalOrderPrice();
+        public List<SalesSearch2> SalesSearch2(SalesSearch2 search);
         List<GetALLInformationOrders> GetAllInformationOrders();
         List<Order> GetAllOrders();
         Order GetOrderById(decimal id);
-        void CreateOrder(Order orderData);
+        int CreateOrder(Order orderData);
         void UpdateOrder(Order orderData);
         void DeleteOrder(decimal id);
         public void AcceptOrRejectOrders(Order order);
@@ -26,7 +27,7 @@ namespace PharmaFinder.Core.Service
         public void ProcessPayment(int OrderdID, Bank bank);
         Task<byte[]> GenerateMonthlyPdfReport(int month, int year);
         Task<byte[]> GenerateAnnualPdfReport(int year);
+        public List<Order> GetOrdersByUserId(decimal id);
         public List<ProfitDTO> CalculateProfitForPaidOrders();
-
     }
 }

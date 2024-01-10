@@ -36,8 +36,11 @@ namespace PharmaFinder.Infra.Service
                     var claims = new List<Claim>
 
                 {
-                new Claim(ClaimTypes.Name, result.Email),
-                new Claim("roleid", result.Roleid.ToString())
+                new Claim("email", result.Email),
+                new Claim("roleid", result.Roleid.ToString()),
+                new Claim("userid", result.Userid.ToString()),
+                new Claim("name", result.Username.ToString())
+
                 };
 
                     var tokeOptions = new JwtSecurityToken(

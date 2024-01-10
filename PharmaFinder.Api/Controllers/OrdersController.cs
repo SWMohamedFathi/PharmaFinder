@@ -49,18 +49,34 @@ namespace PharmaFinder.Api.Controllers
         }
 
         [HttpGet]
+        [Route("CalculateProfitForPaidOrders")]
+        public List<ProfitDTO> CalculateProfitForPaidOrders()
+        {
+            return _orderService.CalculateProfitForPaidOrders();
+
+        }
+
+        [HttpGet]
         [Route("GetOrderById/{id}")]
         public Order GetOrderById(decimal id)
         {
             return _orderService.GetOrderById(id);
         }
+        [HttpGet]
+        [Route("GetOrdersByUserId/{id}")]
+        public List<Order> GetOrdersByUserId(decimal id)
+        {
+            return _orderService.GetOrdersByUserId(id);
+
+        }
+
 
         [HttpPost]
         [Route("CreateOrder")]
         public IActionResult CreateOrder(Order order)
         {
-            _orderService.CreateOrder(order);
-            return StatusCode(201);
+            int orderid= _orderService.CreateOrder(order);
+            return StatusCode(201, orderid);
         }
         [HttpPost]
         [Route("ProcessPayment")]
@@ -163,5 +179,13 @@ namespace PharmaFinder.Api.Controllers
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
+
+        [HttpPost]
+        [Route("SalesSearch2")]
+        public List<SalesSearch2> SalesSearch2(SalesSearch2 search)
+        {
+            return _orderService.SalesSearch2(search);
+        }
+
     }
 }
