@@ -212,13 +212,7 @@ namespace PharmaFinder.Infra.Service
                 <td colspan=""2"">Invoice #: {invoiceDTO.Orderid} | Due: {invoiceDTO.Orderdate}</td>
             </tr>
 
-            <tr class=""heading"">
-                <td colspan=""5"">Payment Method: PayPal</td>
-            </tr>
-
-            <tr class=""details"">
-                <td colspan=""2"">Order Total: ${invoiceDTO.Orderprice}</td>
-            </tr>
+           
 
             <tr class=""heading"">
                 <td>Pharmacy Name</td>
