@@ -41,6 +41,12 @@ namespace PharmaFinder.Infra.Repository
             return result.ToList();
         }
 
+        public List<AnnualProfitDTO> CalculateAnnualProfitForPaidOrders()
+        {
+            var result = dbContext.Connection.Query<AnnualProfitDTO>("orders_package.CalculateAnnualProfitForPaidOrders", commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+
         public List<Order> GetAllOrders()
         {
             IEnumerable<Order> result = dbContext.Connection.Query<Order>("orders_package.GetAllOrders", commandType: CommandType.StoredProcedure);

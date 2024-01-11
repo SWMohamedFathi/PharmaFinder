@@ -29,5 +29,7 @@ namespace PharmaFinder.Core.Service
         Task<byte[]> GenerateAnnualPdfReport(int year);
         public List<Order> GetOrdersByUserId(decimal id);
         public List<ProfitDTO> CalculateProfitForPaidOrders();
+        public List<AnnualProfitDTO> CalculateAnnualProfitForPaidOrders();
+
     }
 }

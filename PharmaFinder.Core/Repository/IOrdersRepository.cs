@@ -29,5 +29,8 @@ namespace PharmaFinder.Core.Repository
         public List<Order> GetOrdersByUserId(decimal id);
         public List<ProfitDTO> CalculateProfitForPaidOrders();
 
+        public List<AnnualProfitDTO> CalculateAnnualProfitForPaidOrders();
+
+
     }
 }
