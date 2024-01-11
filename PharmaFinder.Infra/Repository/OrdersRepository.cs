@@ -107,7 +107,17 @@ namespace PharmaFinder.Infra.Repository
             var result = dbContext.Connection.Execute("orders_package.AcceptOrRejectOrders", p, commandType: CommandType.StoredProcedure);
 
         }
- 
+        public void AcceptOrRejectPayment(Order order)
+        {
+            var p = new DynamicParameters();
+            p.Add("p_OrderID", order.Orderid, dbType: DbType.Int32, direction: ParameterDirection.Input);
+            p.Add("statusOrders", order.Status, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dbContext.Connection.Execute("orders_package.AcceptOrRejectPayment", p, commandType: CommandType.StoredProcedure);
+
+        }
+
+
+
 
         public List<PharmacySalesSearch> SalesSearch(PharmacySalesSearch search)
         {

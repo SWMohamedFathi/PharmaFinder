@@ -103,6 +103,13 @@ namespace PharmaFinder.Api.Controllers
             _orderService.AcceptOrRejectOrders(order);
 
         }
+        [HttpPut]
+        [Route("AcceptOrRejectPayment")]
+        public void AcceptOrRejectPayment(Order order)
+        {
+            _orderService.AcceptOrRejectPayment(order);
+
+        }
 
 
         [HttpPost]
