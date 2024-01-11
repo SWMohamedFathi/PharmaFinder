@@ -94,6 +94,22 @@ namespace PharmaFinder.Api.Controllers
                     return StatusCode(500, "An error occurred while deleting the about: " + ex.Message);
                 }
             }
+
+        [HttpPost]
+        [Route("UploadImage")]
+        public About UploadImage()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine("C:\\Users\\m7mdv\\PharmaFinder-Angular-2\\src\\assets\\Images",fileName);
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            About item = new About();
+            item.Image1 = fileName;
+            return item;
         }
+    }
     }
 
