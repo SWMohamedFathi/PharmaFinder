@@ -33,7 +33,7 @@ namespace PharmaFinder.Infra.Service
                 To = { MailboxAddress.Parse(emailDto.To) },
                 Body = new TextPart(TextFormat.Html)
                 {
-                    Text = emailDto.Html
+                    Text = emailDto.PlainText
                 },
                 From = { MailboxAddress.Parse(_emailConfig.From) }
             };

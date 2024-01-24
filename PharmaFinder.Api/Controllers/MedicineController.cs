@@ -69,7 +69,7 @@ namespace PharmaFinder.Api.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular-1\\src\\assets\\Images", fileName);
+            var fullPath = Path.Combine("C:\\Users\\Mohamed\\pharma\\PharmaFinder-Angular\\src\\assets\\Images", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);

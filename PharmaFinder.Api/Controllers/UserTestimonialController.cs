@@ -51,7 +51,7 @@ namespace PharmaFinder.Api.Controllers
         [Route("AcceptOrRejectTestimonial")]
         public IActionResult AcceptOrRejectTestimonial( Usertestimonial usertestimonial)
         {
-            _usertestimonialService.UpdateUsertestimonial(usertestimonial);
+            _usertestimonialService.AcceptOrRejectTestimonial(usertestimonial);
             return Ok();
         }
 
