@@ -12,8 +12,6 @@ namespace PharmaFinder.Core.Data
         }
 
         public decimal Userid { get; set; }
-        public decimal Pharmacyid { get; set; }
-
         public decimal? Roleid { get; set; }
         public string? Profileimage { get; set; }
         public string? Username { get; set; }

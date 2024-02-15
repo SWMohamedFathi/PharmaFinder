@@ -69,7 +69,7 @@ namespace PharmaFinder.Api.Controllers
         {
             var file = Request.Form.Files[0];
             var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-            var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular-1\\src\\assets\\Images", fileName);
+            var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular-2\\src\\assets\\Images", fileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
                 file.CopyTo(stream);
@@ -78,6 +78,39 @@ namespace PharmaFinder.Api.Controllers
             item.Imagename = fileName;
             return item;
         }
+        //[Route("uploadImages")]
+        //[HttpPost]
+        //public User UploadIMages()
+        //{
+        //    var file = Request.Form.Files[0];
+        //    var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+        //    var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular-1\\src\\assets\\Images", fileName);
+        //    using (var stream = new FileStream(fullPath, FileMode.Create))
+        //    {
+        //        file.CopyTo(stream);
+        //    }
+        //    User item = new User();
+        //    item.Profileimage = fileName;
+        //    return item;
+        //}
+
+        [Route("uploadImages")]
+        [HttpPost]
+        public User UploadImages()
+        {
+            var file = Request.Form.Files[0];
+            var fileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+            var fullPath = Path.Combine("C:\\Users\\Ahmad\\PharmaFinder-Angular-1\\src\\assets\\Images", fileName);
+
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+            User item = new User();
+            item.Profileimage = fileName;
+            return item;
+        }
+
 
     }
 }

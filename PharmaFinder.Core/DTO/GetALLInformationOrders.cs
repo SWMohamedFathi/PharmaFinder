@@ -9,7 +9,6 @@ namespace PharmaFinder.Core.DTO
     public class GetALLInformationOrders
     {
         public string? Username { get; set; }
-        public string? Pharmacyname { get; set; }
         public decimal Orderid { get; set; }
         public DateTime? Orderdate { get; set; }
         public string? Approval { get; set; }
